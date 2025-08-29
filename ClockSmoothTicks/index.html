@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock with Smooth Ticks</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="clock-wrapper">
+            <div class="clock">
+                <div class="clock-face">
+                    <!-- Hour markers -->
+                    <div class="hour-markers"></div>
+                    
+                    <!-- Digital time display -->
+                    <div class="digital-time" id="digital-time">12:00:00</div>
+                    
+                    <!-- Clock hands -->
+                    <div class="hand hour-hand" id="hour-hand"></div>
+                    <div class="hand minute-hand" id="minute-hand"></div>
+                    <div class="hand second-hand" id="second-hand"></div>
+                    
+                    <!-- Center dot -->
+                    <div class="center-dot"></div>
+                </div>
+                
+                <!-- Outer glow effect -->
+                <div class="clock-glow"></div>
+            </div>
+            
+            <!-- Floating particles -->
+            <div class="clock-particles"></div>
+        </div>
+        
+        <div class="time-info">
+            <div class="timezone" id="timezone">PST</div>
+            <div class="date" id="current-date">Monday, Jan 1, 2025</div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

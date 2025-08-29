@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Weather Widget</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="weather-widget">
+            <div class="weather-header">
+                <div class="location">
+                    <svg class="location-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    <span>San Francisco</span>
+                </div>
+                <div class="date" id="current-date">Today</div>
+            </div>
+            
+            <div class="current-weather">
+                <div class="weather-icon-container">
+                    <div class="weather-icon sunny" id="weather-icon">
+                        <div class="sun">
+                            <div class="sun-rays"></div>
+                        </div>
+                    </div>
+                    <div class="weather-particles" id="weather-particles"></div>
+                </div>
+                
+                <div class="temperature-container">
+                    <div class="temperature" id="temperature">24°</div>
+                    <div class="weather-description" id="weather-desc">Sunny</div>
+                </div>
+            </div>
+            
+            <div class="weather-details">
+                <div class="detail-item">
+                    <span class="detail-label">Humidity</span>
+                    <span class="detail-value" id="humidity">65%</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Wind</span>
+                    <span class="detail-value" id="wind">12 km/h</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Pressure</span>
+                    <span class="detail-value" id="pressure">1013 hPa</span>
+                </div>
+            </div>
+            
+            <div class="forecast">
+                <div class="forecast-item">
+                    <div class="forecast-day">Tomorrow</div>
+                    <div class="forecast-icon cloudy"></div>
+                    <div class="forecast-temp">22°/18°</div>
+                </div>
+                <div class="forecast-item">
+                    <div class="forecast-day">Thursday</div>
+                    <div class="forecast-icon rainy"></div>
+                    <div class="forecast-temp">19°/14°</div>
+                </div>
+                <div class="forecast-item">
+                    <div class="forecast-day">Friday</div>
+                    <div class="forecast-icon sunny"></div>
+                    <div class="forecast-temp">26°/20°</div>
+                </div>
+            </div>
+        </div>
+        
+        <button class="refresh-btn" id="refresh-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="23 4 23 10 17 10"></polyline>
+                <polyline points="1 20 1 14 7 14"></polyline>
+                <path d="m3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+            </svg>
+        </button>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

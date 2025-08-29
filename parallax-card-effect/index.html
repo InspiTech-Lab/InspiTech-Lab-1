@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallax Card Effect</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="scene">
+        <div class="background-layers">
+            <div class="layer layer-1"></div>
+            <div class="layer layer-2"></div>
+            <div class="layer layer-3"></div>
+        </div>
+        
+        <div class="card-container">
+            <div class="parallax-card" data-tilt>
+                <div class="card-background"></div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <div class="profile-img">
+                            <div class="profile-gradient"></div>
+                        </div>
+                        <div class="profile-info">
+                            <h3>Sarah Johnson</h3>
+                            <p>UX Designer</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-container">
+                        <div class="stat">
+                            <span class="stat-number">156K</span>
+                            <span class="stat-label">Followers</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">89</span>
+                            <span class="stat-label">Projects</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">4.9</span>
+                            <span class="stat-label">Rating</span>
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="btn-primary">Follow</button>
+                        <button class="btn-secondary">Message</button>
+                    </div>
+                </div>
+                
+                <div class="card-glow"></div>
+                <div class="floating-elements">
+                    <div class="floating-dot" style="--delay: 0s;"></div>
+                    <div class="floating-dot" style="--delay: 0.5s;"></div>
+                    <div class="floating-dot" style="--delay: 1s;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+

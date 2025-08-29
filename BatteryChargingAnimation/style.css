@@ -1,0 +1,351 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #3b82f6 100%);
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: white;
+}
+
+.container {
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    padding: 2rem;
+}
+
+.battery-widget {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    padding: 2.5rem 2rem;
+    min-width: 350px;
+    position: relative;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    animation: slideInScale 1s ease-out;
+    transition: all 0.3s ease;
+}
+.battery-widget:hover {
+    transform: scale(1.08);
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.3);
+}
+
+.battery-container {
+    position: relative;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.battery {
+    width: 120px;
+    height: 60px;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    position: relative;
+    background: rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    box-shadow: 
+        0 0 20px rgba(255, 255, 255, 0.2),
+        inset 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.battery-level {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #ff6b6b 0%, #feca57 50%, #48cab2 100%);
+    border-radius: 4px;
+    position: relative;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: levelPulse 2s ease-in-out infinite;
+    box-shadow: 0 0 15px rgba(255, 107, 107, 0.5);
+}
+
+.battery-terminal {
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 0 3px 3px 0;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.lightning-bolt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 24px;
+    height: 24px;
+    color: #feca57;
+    animation: lightningFlash 1.5s ease-in-out infinite;
+    z-index: 5;
+    filter: drop-shadow(0 0 8px rgba(254, 202, 87, 0.8));
+}
+
+.charging-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.charging-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #feca57;
+    border-radius: 50%;
+    animation: chargeFlow 2s linear infinite;
+    box-shadow: 0 0 8px rgba(254, 202, 87, 0.8);
+}
+
+.battery-glow {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+    border-radius: 15px;
+    background: radial-gradient(ellipse, rgba(72, 202, 178, 0.3) 0%, transparent 70%);
+    animation: batteryGlow 3s ease-in-out infinite alternate;
+    opacity: 0;
+}
+
+.battery-widget.charging .battery-glow {
+    opacity: 1;
+}
+
+.battery-info {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.percentage {
+    font-size: 3rem;
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(45deg, #64b5f6, #42a5f5);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: percentageGlow 2s ease-in-out infinite alternate;
+}
+
+.charging-status {
+    font-size: 1.2rem;
+    color: #48cab2;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.time-remaining {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.power-details {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+
+.detail-row:last-child {
+    margin-bottom: 0;
+}
+
+.detail-label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.detail-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #64b5f6;
+}
+
+.charging-indicator {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
+
+.charging-wave {
+    height: 100%;
+    background: linear-gradient(90deg, transparent 0%, #48cab2 50%, transparent 100%);
+    width: 50%;
+    animation: chargingWave 2s ease-in-out infinite;
+}
+
+.toggle-btn {
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(45deg, #10b981, #059669);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+    transition: all 0.3s ease;
+    animation: toggleFloat 2s ease-in-out infinite;
+}
+
+.toggle-btn:hover {
+    transform: translateX(-50%) scale(1.1);
+    box-shadow: 0 15px 30px rgba(16, 185, 129, 0.5);
+}
+
+.toggle-btn svg {
+    width: 20px;
+    height: 20px;
+    transition: all 0.3s ease;
+}
+
+@keyframes slideInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes levelPulse {
+    0%, 100% {
+        box-shadow: 0 0 15px rgba(255, 107, 107, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(72, 202, 178, 0.8);
+    }
+}
+
+@keyframes lightningFlash {
+    0%, 50%, 100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    25%, 75% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+}
+
+@keyframes chargeFlow {
+    0% {
+        left: -10px;
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        left: 110%;
+        opacity: 0;
+    }
+}
+
+@keyframes batteryGlow {
+    0% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes percentageGlow {
+    0% {
+        text-shadow: 0 0 10px rgba(100, 181, 246, 0.5);
+    }
+    100% {
+        text-shadow: 0 0 20px rgba(100, 181, 246, 0.9);
+    }
+}
+
+@keyframes chargingWave {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(200%);
+    }
+}
+
+@keyframes toggleFloat {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-3px); }
+}
+
+.battery-widget.charging {
+    animation: chargingPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes chargingPulse {
+    0% {
+        background: rgba(255, 255, 255, 0.1);
+    }
+    100% {
+        background: rgba(72, 202, 178, 0.15);
+    }
+}
+
+@media (max-width: 768px) {
+    .battery-widget {
+        min-width: 300px;
+        padding: 2rem 1.5rem;
+    }
+    
+    .battery {
+        width: 100px;
+        height: 50px;
+    }
+    
+    .percentage {
+        font-size: 2.5rem;
+    }
+    
+    .lightning-bolt {
+        width: 20px;
+        height: 20px;
+    }
+}

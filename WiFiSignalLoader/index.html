@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WiFi Signal Loader</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="wifi-loader">
+            <div class="wifi-icon">
+                <div class="signal-bar signal-bar-1"></div>
+                <div class="signal-bar signal-bar-2"></div>
+                <div class="signal-bar signal-bar-3"></div>
+                <div class="signal-bar signal-bar-4"></div>
+                <div class="signal-center"></div>
+            </div>
+            
+            <div class="connection-rings">
+                <div class="ring ring-1"></div>
+                <div class="ring ring-2"></div>
+                <div class="ring ring-3"></div>
+            </div>
+            
+            <div class="status-text" id="status-text">Connecting...</div>
+            <div class="signal-strength" id="signal-strength">
+                <div class="strength-bar"></div>
+                <div class="strength-bar"></div>
+                <div class="strength-bar"></div>
+                <div class="strength-bar"></div>
+                <div class="strength-bar"></div>
+            </div>
+            
+            <div class="connection-info">
+                <div class="network-name" id="network-name">MyWiFi_Network</div>
+                <div class="connection-speed" id="connection-speed">0 Mbps</div>
+            </div>
+        </div>
+        
+        <div class="signal-waves"></div>
+        
+        <button class="retry-btn" id="retry-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="23 4 23 10 17 10"></polyline>
+                <polyline points="1 20 1 14 7 14"></polyline>
+                <path d="m3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+            </svg>
+        </button>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Flip Timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">NEW YEAR COUNTDOWN</h1>
+        <div class="countdown-container">
+            <div class="time-unit">
+                <div class="flip-card">
+                    <div class="flip-card-inner" id="days-flip">
+                        <div class="flip-card-front">
+                            <span id="days">00</span>
+                        </div>
+                        <div class="flip-card-back">
+                            <span id="days-next">00</span>
+                        </div>
+                    </div>
+                </div>
+                <label>DAYS</label>
+            </div>
+            
+            <div class="time-unit">
+                <div class="flip-card">
+                    <div class="flip-card-inner" id="hours-flip">
+                        <div class="flip-card-front">
+                            <span id="hours">00</span>
+                        </div>
+                        <div class="flip-card-back">
+                            <span id="hours-next">00</span>
+                        </div>
+                    </div>
+                </div>
+                <label>HOURS</label>
+            </div>
+            
+            <div class="time-unit">
+                <div class="flip-card">
+                    <div class="flip-card-inner" id="minutes-flip">
+                        <div class="flip-card-front">
+                            <span id="minutes">00</span>
+                        </div>
+                        <div class="flip-card-back">
+                            <span id="minutes-next">00</span>
+                        </div>
+                    </div>
+                </div>
+                <label>MINUTES</label>
+            </div>
+            
+            <div class="time-unit">
+                <div class="flip-card">
+                    <div class="flip-card-inner" id="seconds-flip">
+                        <div class="flip-card-front">
+                            <span id="seconds">00</span>
+                        </div>
+                        <div class="flip-card-back">
+                            <span id="seconds-next">00</span>
+                        </div>
+                    </div>
+                </div>
+                <label>SECONDS</label>
+            </div>
+        </div>
+        
+        <div class="particles"></div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

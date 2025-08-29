@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battery Charging Animation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="battery-widget">
+            <div class="battery-container">
+                <div class="battery">
+                    <div class="battery-level" id="battery-level"></div>
+                    <div class="battery-terminal"></div>
+                    
+                    <div class="lightning-bolt" id="lightning-bolt">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M11 1L6 9h4l-1 10 5-8h-4l1-10z"/>
+                        </svg>
+                    </div>
+                    
+                    <div class="charging-particles" id="charging-particles"></div>
+                </div>
+                
+                <div class="battery-glow"></div>
+            </div>
+            
+            <div class="battery-info">
+                <div class="percentage" id="percentage">0%</div>
+                <div class="charging-status" id="charging-status">Charging</div>
+                <div class="time-remaining" id="time-remaining">Calculating...</div>
+            </div>
+            
+            <div class="power-details">
+                <div class="detail-row">
+                    <span class="detail-label">Voltage</span>
+                    <span class="detail-value" id="voltage">0.0V</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Current</span>
+                    <span class="detail-value" id="current">0.0A</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Power</span>
+                    <span class="detail-value" id="power">0W</span>
+                </div>
+            </div>
+            
+            <div class="charging-indicator">
+                <div class="charging-wave"></div>
+            </div>
+        </div>
+        
+        <button class="toggle-btn" id="toggle-btn">
+            <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5,3 19,12 5,21"></polygon>
+            </svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+                <rect x="6" y="4" width="4" height="16"></rect>
+                <rect x="14" y="4" width="4" height="16"></rect>
+            </svg>
+        </button>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

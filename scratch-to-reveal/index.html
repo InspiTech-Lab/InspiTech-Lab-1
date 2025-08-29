@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scratch to Reveal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="reveal-container">
+        <div class="background-prize">
+            <div class="prize-content">
+                <div class="trophy">🏆</div>
+                <h2 class="prize-title">CONGRATULATIONS!</h2>
+                <div class="prize-amount">$1,000</div>
+                <p class="prize-subtitle">You've won the jackpot!</p>
+                <div class="confetti">
+                    <div class="confetti-piece"></div>
+                    <div class="confetti-piece"></div>
+                    <div class="confetti-piece"></div>
+                    <div class="confetti-piece"></div>
+                    <div class="confetti-piece"></div>
+                </div>
+            </div>
+        </div>
+        
+        <canvas id="scratchCanvas" class="scratch-overlay"></canvas>
+        
+        <div class="instruction-overlay">
+            <div class="instruction-content">
+                <div class="scratch-icon">🪙</div>
+                <p>Scratch to reveal your prize!</p>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <small class="progress-text">0% revealed</small>
+            </div>
+        </div>
+        
+        <div class="sparkle-effects">
+            <div class="sparkle" style="--delay: 0s;"></div>
+            <div class="sparkle" style="--delay: 0.5s;"></div>
+            <div class="sparkle" style="--delay: 1s;"></div>
+            <div class="sparkle" style="--delay: 1.5s;"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
