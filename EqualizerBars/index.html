@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equalizer Bars Animation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="music-player">
+            <div class="player-header">
+                <div class="album-art">
+                    <div class="vinyl-record">
+                        <div class="vinyl-center"></div>
+                        <div class="vinyl-label"></div>
+                    </div>
+                </div>
+                <div class="track-info">
+                    <h2 class="track-title">Midnight Vibes</h2>
+                    <p class="artist">Digital Dreams</p>
+                </div>
+            </div>
+            
+            <div class="equalizer-container">
+                <div class="equalizer">
+                    <div class="bar" data-frequency="60"></div>
+                    <div class="bar" data-frequency="170"></div>
+                    <div class="bar" data-frequency="310"></div>
+                    <div class="bar" data-frequency="600"></div>
+                    <div class="bar" data-frequency="1000"></div>
+                    <div class="bar" data-frequency="3000"></div>
+                    <div class="bar" data-frequency="6000"></div>
+                    <div class="bar" data-frequency="12000"></div>
+                    <div class="bar" data-frequency="14000"></div>
+                    <div class="bar" data-frequency="16000"></div>
+                </div>
+                
+                <div class="frequency-labels">
+                    <span>60</span>
+                    <span>170</span>
+                    <span>310</span>
+                    <span>600</span>
+                    <span>1k</span>
+                    <span>3k</span>
+                    <span>6k</span>
+                    <span>12k</span>
+                    <span>14k</span>
+                    <span>16k</span>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button class="btn-control" id="playBtn">
+                    <div class="play-icon"></div>
+                </button>
+                <button class="btn-control" id="stopBtn">
+                    <div class="stop-icon"></div>
+                </button>
+            </div>
+            
+            <div class="sound-waves">
+                <div class="wave"></div>
+                <div class="wave"></div>
+                <div class="wave"></div>
+            </div>
+        </div>
+        
+        <div class="background-effects">
+            <div class="floating-note">♪</div>
+            <div class="floating-note">♫</div>
+            <div class="floating-note">♪</div>
+            <div class="floating-note">♫</div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

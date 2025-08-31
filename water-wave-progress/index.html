@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Wave Progress Bar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="ocean-background"></div>
+        <h2 class="title">Water Wave Progress Bar</h2>
+        
+        <div class="progress-container">
+            <div class="progress-wrapper">
+                <div class="wave-progress">
+                    <div class="wave wave-1"></div>
+                    <div class="wave wave-2"></div>
+                    <div class="wave wave-3"></div>
+                    <div class="progress-text">
+                        <span class="percentage">0%</span>
+                        <span class="status">Loading</span>
+                    </div>
+                </div>
+                <div class="progress-ring">
+                    <svg class="ring-svg" viewBox="0 0 120 120">
+                        <circle cx="60" cy="60" r="50" class="ring-bg"></circle>
+                        <circle cx="60" cy="60" r="50" class="ring-progress"></circle>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button class="control-btn" id="startBtn">Start</button>
+                <button class="control-btn" id="resetBtn">Reset</button>
+            </div>
+        </div>
+        
+        <div class="bubbles">
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+        </div>
+        
+        <div class="water-drops">
+            <div class="drop"></div>
+            <div class="drop"></div>
+            <div class="drop"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

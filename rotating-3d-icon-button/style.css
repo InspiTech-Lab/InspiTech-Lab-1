@@ -7,7 +7,7 @@
 body {
     font-family: 'Arial', sans-serif;
     background: #0a0a0f;
-    overflow: hidden;
+ 
     height: 100vh;
     cursor: none;
 }
@@ -19,6 +19,16 @@ body {
     align-items: center;
     justify-content: center;
     perspective: 1200px;
+}
+.button-showcase{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 6rem;
+    grid-template-rows: auto 1fr;
+    /* border: 1px solid rgba(255, 255, 255, 0.1); */
 }
 
 .cosmic-background {
@@ -56,7 +66,6 @@ body {
     font-size: 3rem;
     font-weight: 800;
     text-align: center;
-    margin-bottom: 3rem;
     background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
     background-clip: text;
     -webkit-background-clip: text;
@@ -73,8 +82,16 @@ body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 3rem;
-    padding: 2rem;
 }
+
+/* Zig-zag effect: offset every other row */
+.icon-button:nth-child(odd) {
+    transform: translateY(0);
+}
+.icon-button:nth-child(even) {
+    transform: translateY(40px); /* stagger even cards */
+}
+
 
 .icon-button {
     position: relative;
@@ -191,12 +208,12 @@ body {
 }
 
 @media (max-width: 768px) {
-    body { cursor: default; }
-    .cursor-trail { display: none; }
-    .button-grid { 
-        grid-template-columns: 1fr; 
+    .button-grid {
+        grid-template-columns: 1fr; /* single column for smaller screens */
         gap: 2rem;
     }
-    .showcase-title { font-size: 2rem; }
+    .icon-button:nth-child(even) {
+        transform: translateY(0); /* no offset on single column */
+    }
 }
 

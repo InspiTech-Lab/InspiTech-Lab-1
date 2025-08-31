@@ -7,8 +7,18 @@
 body {
     font-family: 'Arial', sans-serif;
     background: #0f0f23;
-    overflow: hidden;
+
     height: 100vh;
+}
+h1{
+    color: white;
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    z-index: 10;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
 .scene {
@@ -190,7 +200,7 @@ body {
     display: block;
     font-size: 1.8rem;
     font-weight: 700;
-    color: #4ecdc4;
+    color:#ff6b6b;
     animation: numberPulse 3s ease-in-out infinite;
 }
 
