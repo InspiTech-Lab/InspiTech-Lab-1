@@ -1,0 +1,279 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background-size: 400% 400%;
+    animation: gradientFlow 10s ease-in-out infinite;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+@keyframes gradientFlow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.title {
+    color: white;
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    font-weight: 800;
+    margin-bottom: 80px;
+    text-align: center;
+    letter-spacing: -0.02em;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.share-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+}
+
+.share-button {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 25px 35px;
+    background: rgba(255, 255, 255, 0.25);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(20px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    touch-action: manipulation;
+    overflow: visible;
+}
+
+.share-button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+    background: rgba(255, 255, 255, 0.35);
+}
+
+.main-icon {
+    font-size: clamp(28px, 7vw, 36px);
+    transition: all 0.3s ease;
+}
+
+.share-button.active .main-icon {
+    transform: rotate(180deg) scale(1.2);
+}
+
+.share-options {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 50;
+    place-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.share-options.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.share-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    color: #333;
+    font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: scale(0) rotateY(180deg);
+    white-space: nowrap;
+    min-width: 120px;
+    transform-style: preserve-3d;
+}
+
+.share-option:hover {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 1);
+}
+
+.share-options.active .share-option {
+    animation: slideInScale3D 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.share-options.active .share-option:nth-child(1) { animation-delay: 0.1s; }
+.share-options.active .share-option:nth-child(2) { animation-delay: 0.15s; }
+.share-options.active .share-option:nth-child(3) { animation-delay: 0.2s; }
+.share-options.active .share-option:nth-child(4) { animation-delay: 0.25s; }
+.share-options.active .share-option:nth-child(5) { animation-delay: 0.3s; }
+.share-options.active .share-option:nth-child(6) { animation-delay: 0.35s; }
+
+@keyframes slideInScale3D {
+    0% {
+        transform: scale(0) rotateY(180deg) translateZ(-50px);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1) rotateY(90deg) translateZ(0);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1) rotateY(0deg) translateZ(0);
+        opacity: 1;
+    }
+}
+
+.share-option.clicked {
+    animation: clickRotate3D 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes clickRotate3D {
+    0% {
+        transform: scale(1) rotateY(0deg) rotateX(0deg);
+    }
+    25% {
+        transform: scale(1.1) rotateY(90deg) rotateX(15deg);
+    }
+    50% {
+        transform: scale(1.2) rotateY(180deg) rotateX(30deg);
+    }
+    75% {
+        transform: scale(1.1) rotateY(270deg) rotateX(15deg);
+    }
+    100% {
+        transform: scale(1) rotateY(360deg) rotateX(0deg);
+    }
+}
+
+.option-icon {
+    font-size: 20px;
+    transition: all 0.3s ease;
+    transform-style: preserve-3d;
+}
+
+.share-option:hover .option-icon {
+    transform: scale(1.2) rotateZ(10deg) rotateY(15deg);
+}
+
+.ripple-effect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.ripple-active {
+    animation: rippleExpand 1s ease-out forwards;
+}
+
+@keyframes rippleExpand {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+    100% {
+        width: 300px;
+        height: 300px;
+        opacity: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .share-options {
+        width: 280px;
+        height: 280px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .share-option {
+        min-width: 100px;
+        padding: 12px 8px;
+        font-size: 12px;
+        flex-direction: column;
+        gap: 4px;
+        text-align: center;
+    }
+    
+    .option-icon {
+        font-size: 18px;
+    }
+    
+    .share-wrapper {
+        touch-action: manipulation;
+    }
+}
+
+.circle-expand {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    border: 3px solid rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+    pointer-events: none;
+    z-index: 200;
+    animation: circleExpand 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes circleExpand {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+    }
+    70% {
+        transform: translate(-50%, -50%) scale(5);
+        opacity: 0.3;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(8);
+        opacity: 0;
+    }
+}

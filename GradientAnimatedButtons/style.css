@@ -1,0 +1,403 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.title {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    font-weight: 800;
+    background: linear-gradient(135deg, #667eea, #764ba2, #f093fb, #f5576c);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+    margin-bottom: 60px;
+    animation: gradientShift 4s ease-in-out infinite;
+    letter-spacing: -0.02em;
+}
+
+@keyframes gradientShift {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    max-width: 800px;
+    width: 100%;
+
+    box-shadow: inset;
+}
+
+.btn {
+    position: relative;
+    padding: 18px 36px;
+    border: none;
+    border-radius: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(10px);
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-text {
+    position: relative;
+    z-index: 2;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Shimmer Button */
+.btn-shimmer {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.4);
+}
+
+.shimmer {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+.btn-shimmer:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(102, 126, 234, 0.6);
+}
+
+/* Wave Button */
+.btn-wave {
+    background: linear-gradient(135deg, #ff9a9e, #fecfef);
+    box-shadow: 0 8px 32px rgba(255, 154, 158, 0.4);
+}
+
+.wave {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+    animation: wave 3s ease-in-out infinite;
+    transform: skewX(-20deg);
+}
+
+@keyframes wave {
+
+    0%,
+    100% {
+        transform: translateX(-100%) skewX(-20deg);
+    }
+
+    50% {
+        transform: translateX(100%) skewX(-20deg);
+    }
+}
+
+/* Glow Button */
+.btn-glow {
+    background: linear-gradient(135deg, #a8edea, #fed6e3);
+    box-shadow: 0 8px 32px rgba(168, 237, 234, 0.4);
+}
+
+.glow-ring {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 20px;
+    background: linear-gradient(45deg, #a8edea, #fed6e3, #a8edea);
+    background-size: 200% 200%;
+    animation: glowPulse 2s linear infinite;
+    z-index: -1;
+}
+
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+        opacity: 0.8;
+    }
+
+    50% {
+        background-position: 100% 50%;
+        opacity: 1;
+    }
+}
+
+/* Morph Button */
+.btn-morph {
+    background: linear-gradient(135deg, #667eea, #764ba2, #f093fb, #f5576c);
+    background-size: 400% 400%;
+    animation: morphGradient 3s ease-in-out infinite;
+    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.4);
+}
+
+@keyframes morphGradient {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    25% {
+        background-position: 100% 0%;
+    }
+
+    50% {
+        background-position: 100% 100%;
+    }
+
+    75% {
+        background-position: 0% 100%;
+    }
+}
+
+.btn-morph:hover {
+    animation-duration: 0.5s;
+    transform: scale(1.05);
+}
+
+/* Liquid Button */
+.btn-liquid {
+    background: linear-gradient(135deg, #ff6b6b, #feca57);
+    box-shadow: 0 8px 32px rgba(255, 107, 107, 0.4);
+}
+
+.liquid {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #feca57, #ff6b6b);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+    border-radius: 16px;
+}
+
+.btn-liquid:hover .liquid {
+    top: 0;
+}
+
+.btn-liquid:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(255, 107, 107, 0.6);
+}
+
+/* Neon Button */
+.btn-neon {
+    background: linear-gradient(135deg, #12c2e9, #c471ed, #f64f59);
+    animation: neonPulse 2s ease-in-out infinite alternate;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+@keyframes neonPulse {
+    0% {
+        box-shadow: 0 0 20px rgba(18, 194, 233, 0.6),
+            0 0 40px rgba(196, 113, 237, 0.4),
+            0 0 60px rgba(246, 79, 89, 0.2);
+    }
+
+    100% {
+        box-shadow: 0 0 40px rgba(18, 194, 233, 1),
+            0 0 80px rgba(196, 113, 237, 0.8),
+            0 0 120px rgba(246, 79, 89, 0.6);
+    }
+}
+
+/* Hologram Button */
+.btn-hologram {
+    background: linear-gradient(135deg, #00c9ff, #92fe9d);
+    position: relative;
+    overflow: hidden;
+}
+
+.hologram-layer {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+    animation: hologramScan 3s linear infinite;
+    transform: skewX(-20deg);
+}
+
+@keyframes hologramScan {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+.btn-hologram:hover {
+    animation: hologramFlicker 0.3s ease-in-out 3;
+}
+
+@keyframes hologramFlicker {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+/* Floating Orbs */
+.floating-orbs {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(1px);
+    animation: float 6s ease-in-out infinite;
+}
+
+.orb-1 {
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.3), transparent);
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.orb-2 {
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, rgba(255, 107, 107, 0.3), transparent);
+    top: 60%;
+    right: 15%;
+    animation-delay: 2s;
+}
+
+.orb-3 {
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle, rgba(168, 237, 234, 0.3), transparent);
+    bottom: 20%;
+    left: 20%;
+    animation-delay: 4s;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.3;
+    }
+
+    33% {
+        transform: translateY(-20px) rotate(120deg);
+        opacity: 0.6;
+    }
+
+    66% {
+        transform: translateY(10px) rotate(240deg);
+        opacity: 0.4;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 24px 16px;
+    }
+
+    .buttons-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        max-width: 100%;
+    }
+
+    .btn {
+        padding: 16px 28px;
+        font-size: 15px;
+        min-height: 56px;
+    }
+
+    .title {
+        margin-bottom: 40px;
+    }
+
+    .orb-1,
+    .orb-2,
+    .orb-3 {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn {
+        padding: 14px 24px;
+        font-size: 14px;
+        min-height: 52px;
+        border-radius: 12px;
+    }
+}

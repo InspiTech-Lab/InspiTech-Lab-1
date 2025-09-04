@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ripple Effect Click Animation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="title">Ripple Effect Magic</h2>
+        <div class="demo-area">
+            <div class="ripple-buttons">
+                <button class="ripple-btn primary" data-ripple="primary">
+                    <span>Primary Action</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9,18 15,12 9,6"/>
+                    </svg>
+                </button>
+                
+                <button class="ripple-btn success" data-ripple="success">
+                    <span>Success Action</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="20,6 9,17 4,12"/>
+                    </svg>
+                </button>
+                
+                <button class="ripple-btn warning" data-ripple="warning">
+                    <span>Warning Action</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <triangle points="10.29,3 21.71,21 2.71,21"/>
+                        <line x1="12" y1="9" x2="12" y2="13"/>
+                        <line x1="12" y1="17" x2="12.01" y2="17"/>
+                    </svg>
+                </button>
+                
+                <button class="ripple-btn danger" data-ripple="danger">
+                    <span>Danger Action</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="15" y1="9" x2="9" y2="15"/>
+                        <line x1="9" y1="9" x2="15" y2="15"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="click-area">
+                <div class="click-zone" id="clickZone">
+                    <span class="click-text">Click anywhere for ripples!</span>
+                    <div class="floating-particles">
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-number" id="clickCount">0</span>
+                <span class="stat-label">Clicks</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="rippleCount">0</span>
+                <span class="stat-label">Ripples</span>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

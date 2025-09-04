@@ -1,0 +1,177 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    background-size: 400% 400%;
+    animation: backgroundShift 6s ease-in-out infinite;
+    min-height: 100vh;
+    overflow: hidden;
+    cursor: none;
+    position: relative;
+}
+
+@keyframes backgroundShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.title {
+    color: white;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 700;
+    margin-bottom: 60px;
+    text-align: center;
+    letter-spacing: -0.02em;
+}
+
+.magnetic-wrapper {
+    position: relative;
+    z-index: 10;
+}
+
+.magnetic-button {
+    position: relative;
+    padding: 18px 40px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: none;
+    backdrop-filter: blur(20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    transform-origin: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.magnetic-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.button-text {
+    position: relative;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.button-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 50px;
+}
+
+.magnetic-button:hover .button-glow {
+    opacity: 1;
+}
+
+.cursor-trail {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s ease-out;
+    mix-blend-mode: screen;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(100, 200, 255, 0.6) 50%, transparent 100%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 5;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(100, 200, 255, 0.5);
+}
+
+.particle.attracted {
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: scale(1.5);
+    background: radial-gradient(circle, rgba(255, 100, 100, 0.9) 0%, rgba(255, 200, 100, 0.8) 50%, transparent 100%);
+    box-shadow: 0 0 15px rgba(255, 100, 100, 0.8);
+}
+
+.particle.spreading {
+    transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    opacity: 0.7;
+}
+
+@keyframes particleFloat {
+    0%, 100% {
+        transform: translateY(0px) translateX(0px);
+    }
+    25% {
+        transform: translateY(-10px) translateX(5px);
+    }
+    50% {
+        transform: translateY(-5px) translateX(-8px);
+    }
+    75% {
+        transform: translateY(-15px) translateX(3px);
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        cursor: auto;
+    }
+    
+    .cursor-trail {
+        display: none;
+    }
+    
+    .magnetic-button {
+        padding: 16px 32px;
+        font-size: 16px;
+        touch-action: manipulation;
+    }
+    
+    .title {
+        margin-bottom: 40px;
+    }
+    
+    .particle {
+        width: 6px;
+        height: 6px;
+    }
+}
+
+@keyframes magneticPull {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(var(--x, 0), var(--y, 0)) scale(1.1); }
+    100% { transform: translate(0, 0) scale(1); }
+}
+
+.magnetic-active {
+    animation: magneticPull 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}

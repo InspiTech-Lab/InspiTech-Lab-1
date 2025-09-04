@@ -1,0 +1,215 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #ff6b6b 0%, #ffd93d 50%, #6bcf7f 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 8s ease-in-out infinite;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.title {
+    color: white;
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    font-weight: 800;
+    margin-bottom: 60px;
+    text-align: center;
+    letter-spacing: -0.02em;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.buttons-wrapper {
+    display: flex;
+    gap: clamp(30px, 8vw, 80px);
+    flex-direction: row;
+}
+
+@media (max-width: 600px) {
+    .buttons-wrapper {
+        flex-direction: column;
+        gap: 40px;
+    }
+}
+
+.button-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.like-button, .clap-button {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 25px 30px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(15px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    min-width: 120px;
+    touch-action: manipulation;
+}
+
+.like-button:hover, .clap-button:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.like-button:active, .clap-button:active {
+    transform: translateY(-2px) scale(0.98);
+}
+
+.heart-icon, .clap-icon {
+    font-size: clamp(24px, 6vw, 32px);
+    transition: all 0.3s ease;
+}
+
+.like-button.liked .heart-icon {
+    animation: heartBeat 0.6s ease-in-out;
+    filter: drop-shadow(0 0 10px rgba(255, 107, 107, 0.7));
+}
+
+.clap-button.clapped .clap-icon {
+    animation: clapShake 0.4s ease-in-out;
+    filter: drop-shadow(0 0 10px rgba(255, 217, 61, 0.7));
+}
+
+@keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.3); }
+    50% { transform: scale(1.1); }
+    75% { transform: scale(1.25); }
+}
+
+@keyframes clapShake {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(-10deg) scale(1.2); }
+    50% { transform: rotate(5deg) scale(1.3); }
+    75% { transform: rotate(-5deg) scale(1.1); }
+}
+
+.button-text {
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.count {
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 14px;
+    font-weight: 700;
+    min-width: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.particles-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: visible;
+    z-index: 1000;
+}
+
+.particle {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1001;
+}
+
+.heart-particle {
+    color: #ff6b6b;
+    font-size: 16px;
+    animation: heartBurst 1.5s ease-out forwards;
+}
+
+.clap-particle {
+    width: 8px;
+    height: 8px;
+    background: #ffd93d;
+    border-radius: 50%;
+    animation: clapBurst 1.2s ease-out forwards;
+}
+
+@keyframes heartBurst {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(0.5);
+    }
+    30% {
+        opacity: 1;
+        transform: translate(var(--dx), var(--dy)) scale(1.2);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(calc(var(--dx) * 2), calc(var(--dy) * 2)) scale(0.3);
+    }
+}
+
+@keyframes clapBurst {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--dx), var(--dy)) scale(0.2);
+    }
+}
+
+.burst-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    animation: ringBurst 0.8s ease-out forwards;
+}
+
+@keyframes ringBurst {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(3);
+        opacity: 0;
+    }
+}

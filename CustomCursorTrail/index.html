@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Cursor Trail Animation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="cosmic-background">
+            <div class="star star-1"></div>
+            <div class="star star-2"></div>
+            <div class="star star-3"></div>
+            <div class="star star-4"></div>
+            <div class="star star-5"></div>
+        </div>
+        
+        <div class="content-panel">
+            <h2 class="title">Cosmic Cursor</h2>
+            <p class="subtitle">Move your mouse to create magic</p>
+            
+            <div class="cursor-modes">
+                <button class="mode-btn active" data-mode="sparkle">✨ Sparkle</button>
+                <button class="mode-btn" data-mode="fire">🔥 Fire</button>
+                <button class="mode-btn" data-mode="rainbow">🌈 Rainbow</button>
+                <button class="mode-btn" data-mode="galaxy">🌌 Galaxy</button>
+            </div>
+            
+            <div class="interaction-area">
+                <div class="target-zone">
+                    <div class="target-ring"></div>
+                    <div class="target-center">
+                        <span>Hover Me!</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="trail-stats">
+                <div class="stat">
+                    <span class="stat-value" id="particleCount">0</span>
+                    <span class="stat-label">Particles</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" id="trailLength">0</span>
+                    <span class="stat-label">Trail Length</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cursor-trail-container"></div>
+        <div class="particle-container"></div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

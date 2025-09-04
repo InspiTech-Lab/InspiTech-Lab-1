@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floating Crypto Coin Ticker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="title">Crypto Market Live</h2>
+        <div class="ticker-container">
+            <div class="crypto-grid">
+                <div class="crypto-card" data-symbol="BTC">
+                    <div class="coin-header">
+                        <div class="coin-icon btc">₿</div>
+                        <div class="coin-info">
+                            <span class="coin-name">Bitcoin</span>
+                            <span class="coin-symbol">BTC</span>
+                        </div>
+                    </div>
+                    <div class="price-section">
+                        <span class="price" data-price="67,234.56">$67,234.56</span>
+                        <span class="change positive" data-change="+2.34%">+2.34%</span>
+                    </div>
+                    <div class="chart-mini">
+                        <div class="chart-line"></div>
+                    </div>
+                    <div class="glow-effect"></div>
+                </div>
+
+                <div class="crypto-card" data-symbol="ETH">
+                    <div class="coin-header">
+                        <div class="coin-icon eth">Ξ</div>
+                        <div class="coin-info">
+                            <span class="coin-name">Ethereum</span>
+                            <span class="coin-symbol">ETH</span>
+                        </div>
+                    </div>
+                    <div class="price-section">
+                        <span class="price" data-price="3,456.78">$3,456.78</span>
+                        <span class="change negative" data-change="-1.23%">-1.23%</span>
+                    </div>
+                    <div class="chart-mini">
+                        <div class="chart-line"></div>
+                    </div>
+                    <div class="glow-effect"></div>
+                </div>
+
+                <div class="crypto-card" data-symbol="ADA">
+                    <div class="coin-header">
+                        <div class="coin-icon ada">₳</div>
+                        <div class="coin-info">
+                            <span class="coin-name">Cardano</span>
+                            <span class="coin-symbol">ADA</span>
+                        </div>
+                    </div>
+                    <div class="price-section">
+                        <span class="price" data-price="0.4567">$0.4567</span>
+                        <span class="change positive" data-change="+5.67%">+5.67%</span>
+                    </div>
+                    <div class="chart-mini">
+                        <div class="chart-line"></div>
+                    </div>
+                    <div class="glow-effect"></div>
+                </div>
+
+                <div class="crypto-card" data-symbol="SOL">
+                    <div class="coin-header">
+                        <div class="coin-icon sol">◎</div>
+                        <div class="coin-info">
+                            <span class="coin-name">Solana</span>
+                            <span class="coin-symbol">SOL</span>
+                        </div>
+                    </div>
+                    <div class="price-section">
+                        <span class="price" data-price="234.89">$234.89</span>
+                        <span class="change positive" data-change="+8.91%">+8.91%</span>
+                    </div>
+                    <div class="chart-mini">
+                        <div class="chart-line"></div>
+                    </div>
+                    <div class="glow-effect"></div>
+                </div>
+            </div>
+            
+            <div class="market-stats">
+                <div class="stat-card">
+                    <span class="stat-label">Market Cap</span>
+                    <span class="stat-value" id="marketCap">$2.1T</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">24h Volume</span>
+                    <span class="stat-value" id="volume">$89.2B</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Fear & Greed</span>
+                    <span class="stat-value greed" id="fearGreed">78</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="floating-coins">
+            <div class="floating-coin">₿</div>
+            <div class="floating-coin">Ξ</div>
+            <div class="floating-coin">₳</div>
+            <div class="floating-coin">◎</div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

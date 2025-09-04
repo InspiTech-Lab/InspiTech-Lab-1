@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Like & Clap Buttons with Burst Effects</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="title">Interactive Like & Clap</h2>
+        <div class="buttons-wrapper">
+            <div class="button-container">
+                <button class="like-button" id="likeBtn">
+                    <div class="heart-icon">❤️</div>
+                    <span class="button-text">Like</span>
+                    <span class="count" id="likeCount">0</span>
+                </button>
+                <div class="particles-container" id="likeParticles"></div>
+            </div>
+            
+            <div class="button-container">
+                <button class="clap-button" id="clapBtn">
+                    <div class="clap-icon">👏</div>
+                    <span class="button-text">Clap</span>
+                    <span class="count" id="clapCount">0</span>
+                </button>
+                <div class="particles-container" id="clapParticles"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
