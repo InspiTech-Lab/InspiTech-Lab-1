@@ -157,7 +157,13 @@
             justify-content: center;
             align-items: center;
         }
-
+        body.blush {
+            background: radial-gradient(circle at center,
+              rgba(255, 182, 193, 0.6),
+              rgba(255, 105, 180, 0.3),
+              rgba(255, 20, 147, 0.1)
+            );
+          }
         .music-button:hover {
             transform: scale(1.1);
             box-shadow: 0 12px 30px rgba(245, 87, 108, 0.6);
@@ -235,7 +241,14 @@
             margin-bottom: 50px;
             position: relative;
         }
-
+.section-title-mem{
+    font-family: 'Pacifico', cursive;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #667eea;
+    margin-bottom: 50px;
+    position: relative;
+}
         .section-title::after {
             content: '';
             position: absolute;
@@ -365,6 +378,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: 'Quicksand', sans-serif;
+            align-items: center;
         }
 
         .wish-button:hover {
@@ -595,7 +609,7 @@
   
     <section class="section">
         <h2 class="section-title aos-init fade-up">Our First Year Journey 💕</h2>
-        <h2 class="section-title animate__animated animate__fadeIn">📸 Precious Memories 📸</h2>
+        <h2 class="section-title-mem animate__animated animate__fadeIn">📸 Precious Memories 📸</h2>
         <div class="photo-grid" id="photoGrid">
             <div class="photo-card aos-init fade-up">
                 <div class="photo-wrapper">
@@ -829,80 +843,104 @@
 
 // Music Control
 let isPlaying = true;
-const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  let activeOscillators = []; // store currently playing notes
 
-function playBirthdayTune() {
-  const notes = [
-    { freq: 261.63, duration: 0.4 }, // C
-    { freq: 261.63, duration: 0.4 }, // C
-    { freq: 293.66, duration: 0.6 }, // D
-    { freq: 261.63, duration: 0.6 }, // C
-    { freq: 349.23, duration: 0.6 }, // F
-    { freq: 329.63, duration: 1.0 }, // E
-    { freq: 261.63, duration: 0.4 }, // C
-    { freq: 261.63, duration: 0.4 }, // C
-    { freq: 293.66, duration: 0.6 }, // D
-    { freq: 261.63, duration: 0.6 }, // C
-    { freq: 392.00, duration: 0.6 }, // G
-    { freq: 349.23, duration: 1.0 }, // F
-    { freq: 261.63, duration: 0.4 }, // C
-    { freq: 261.63, duration: 0.4 }, // C
-    { freq: 523.25, duration: 0.6 }, // C5
-    { freq: 440.00, duration: 0.6 }, // A
-    { freq: 349.23, duration: 0.6 }, // F
-    { freq: 329.63, duration: 0.6 }, // E
-    { freq: 293.66, duration: 1.0 }, // D
-    { freq: 466.16, duration: 0.4 }, // A#
-    { freq: 466.16, duration: 0.4 }, // A#
-    { freq: 440.00, duration: 0.6 }, // A
-    { freq: 349.23, duration: 0.6 }, // F
-    { freq: 392.00, duration: 0.6 }, // G
-    { freq: 349.23, duration: 1.0 }, // F
-  ];
+  function playBirthdayTune() {
+    const notes = [
+      { freq: 261.63, duration: 0.4 },
+      { freq: 261.63, duration: 0.4 },
+      { freq: 293.66, duration: 0.6 },
+      { freq: 261.63, duration: 0.6 },
+      { freq: 349.23, duration: 0.6 },
+      { freq: 329.63, duration: 1.0 },
+      { freq: 261.63, duration: 0.4 },
+      { freq: 261.63, duration: 0.4 },
+      { freq: 293.66, duration: 0.6 },
+      { freq: 261.63, duration: 0.6 },
+      { freq: 392.0, duration: 0.6 },
+      { freq: 349.23, duration: 1.0 },
+      { freq: 261.63, duration: 0.4 },
+      { freq: 261.63, duration: 0.4 },
+      { freq: 523.25, duration: 0.6 },
+      { freq: 440.0, duration: 0.6 },
+      { freq: 349.23, duration: 0.6 },
+      { freq: 329.63, duration: 0.6 },
+      { freq: 293.66, duration: 1.0 },
+      { freq: 466.16, duration: 0.4 },
+      { freq: 466.16, duration: 0.4 },
+      { freq: 440.0, duration: 0.6 },
+      { freq: 349.23, duration: 0.6 },
+      { freq: 392.0, duration: 0.6 },
+      { freq: 349.23, duration: 1.0 },
+    ];
 
-  let startTime = audioContext.currentTime;
-  let totalDuration = 0;
+    let startTime = audioContext.currentTime;
+    let totalDuration = 0;
 
-  for (const note of notes) {
-    const oscillator = audioContext.createOscillator();
-    const gainNode = audioContext.createGain();
+    activeOscillators = [];
 
-    oscillator.type = "sine";
-    oscillator.frequency.value = note.freq;
+    for (const note of notes) {
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
 
-    oscillator.connect(gainNode);
-    gainNode.connect(audioContext.destination);
+      oscillator.type = "sine";
+      oscillator.frequency.value = note.freq;
 
-    gainNode.gain.setValueAtTime(0.25, startTime + totalDuration);
-    gainNode.gain.exponentialRampToValueAtTime(0.001, startTime + totalDuration + note.duration);
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
 
-    oscillator.start(startTime + totalDuration);
-    oscillator.stop(startTime + totalDuration + note.duration);
+      gainNode.gain.setValueAtTime(0.25, startTime + totalDuration);
+      gainNode.gain.exponentialRampToValueAtTime(
+        0.001,
+        startTime + totalDuration + note.duration
+      );
 
-    totalDuration += note.duration + 0.05; // small gap between notes
-  }
+      oscillator.start(startTime + totalDuration);
+      oscillator.stop(startTime + totalDuration + note.duration);
 
-  // Loop the tune smoothly if playing
-  if (isPlaying) {
-    setTimeout(playBirthdayTune, totalDuration * 1000 + 500);
-  }
-}
+      // keep track of oscillators
+      activeOscillators.push(oscillator);
 
-function toggleMusic() {
-  const button = document.getElementById("musicButton");
-  isPlaying = !isPlaying;
-
-  if (isPlaying) {
-    if (audioContext.state === "suspended") {
-      audioContext.resume();
+      totalDuration += note.duration + 0.05;
     }
-    button.textContent = "🔊";
-    playBirthdayTune();
-  } else {
-    button.textContent = "🔇";
-  }
-}
 
+    // loop tune smoothly if still playing
+    if (isPlaying) {
+      setTimeout(playBirthdayTune, totalDuration * 1000 + 500);
+    }
+  }
+
+  function stopMusic() {
+    activeOscillators.forEach((osc) => {
+      try {
+        osc.stop();
+      } catch (e) {}
+    });
+    activeOscillators = [];
+  }
+
+  function toggleMusic() {
+    const button = document.getElementById("musicButton");
+    isPlaying = !isPlaying;
+
+    if (isPlaying) {
+      document.body.classList.add("blush");
+      if (audioContext.state === "suspended") {
+        audioContext.resume();
+      }
+      button.textContent = "🔊";
+      playBirthdayTune();
+    } else {
+      document.body.classList.remove("blush");
+      stopMusic();
+      button.textContent = "🔇";
+    }
+  }
+
+  // Auto start on load
+  playBirthdayTune();
+  document.body.classList.add("blush");
 // Start automatically after user clicks once anywhere
 document.body.addEventListener("click", () => {
   if (audioContext.state === "suspended") {
