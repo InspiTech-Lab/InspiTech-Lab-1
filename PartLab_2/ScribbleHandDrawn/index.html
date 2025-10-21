@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scribble Hand-Drawn Animation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="animation-area">
+            <h3 class="title">Hand-Drawn Magic</h3>
+            
+            <div class="scribble-container">
+                <svg class="scribble-svg" viewBox="0 0 400 300">
+                    <path class="scribble-path heart" d="M200,70 C200,50 180,30 160,30 C140,30 120,50 120,70 C120,100 150,130 200,200 C250,130 280,100 280,70 C280,50 260,30 240,30 C220,30 200,50 200,70 Z" fill="none" stroke="#FF6B6B" stroke-width="3" stroke-linecap="round"/>
+                    
+                    <path class="scribble-path star" d="M320,50 L325,65 L340,65 L328,75 L333,90 L320,80 L307,90 L312,75 L300,65 L315,65 Z" fill="none" stroke="#4ECDC4" stroke-width="2" stroke-linecap="round"/>
+                    
+                    <path class="scribble-path circle" d="M80,180 A30,30 0 1,1 80,179" fill="none" stroke="#45B7D1" stroke-width="2" stroke-linecap="round"/>
+                    
+                    <path class="scribble-path arrow" d="M60,120 L100,120 M90,110 L100,120 L90,130" fill="none" stroke="#FFD93D" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </div>
+            
+            <div class="floating-elements">
+                <div class="float-item" style="--delay: 0s;">✨</div>
+                <div class="float-item" style="--delay: 0.5s;">🎨</div>
+                <div class="float-item" style="--delay: 1s;">✏️</div>
+                <div class="float-item" style="--delay: 1.5s;">🌟</div>
+            </div>
+            
+            <div class="interaction-area">
+                <button class="draw-btn" id="drawBtn">Start Drawing</button>
+                <div class="drawing-canvas" id="drawingCanvas"></div>
+            </div>
+        </div>
+        
+        <div class="particles" id="particles"></div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

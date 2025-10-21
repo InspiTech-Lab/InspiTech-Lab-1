@@ -1,0 +1,339 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.container {
+    position: relative;
+    width: 100vw;
+    min-height: 100vh;
+    padding: 2rem;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #667eea 100%);
+}
+
+.title {
+    text-align: center;
+    color: white;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    margin-bottom: 3rem;
+    font-weight: bold;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    animation: titlePulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes titlePulse {
+    0% { transform: scale(1); text-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
+    100% { transform: scale(1.05); text-shadow: 0 0 30px rgba(255, 255, 255, 0.8); }
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+}
+
+.gradient-card {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    border-radius: 20px;
+    padding: 3px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3);
+    background-size: 300% 300%;
+    animation: gradientRotate 4s ease-in-out infinite;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.gradient-card:hover {
+    transform: scale(1.05);
+    animation-duration: 2s;
+}
+
+.gradient-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    padding: 3px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3);
+    background-size: 300% 300%;
+    animation: gradientRotate 4s ease-in-out infinite;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
+}
+
+.card-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 17px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 1;
+}
+
+.card-content .icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    animation: iconBounce 2s ease-in-out infinite;
+}
+
+.card-content h4 {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.card-content p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+}
+
+@keyframes iconBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes gradientRotate {
+    0% { background-position: 0% 50%; }
+    25% { background-position: 100% 50%; }
+    50% { background-position: 100% 100%; }
+    75% { background-position: 50% 100%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Different animation delays for each card */
+.card-2 {
+    animation-delay: 0.5s;
+}
+
+.card-3 {
+    animation-delay: 1s;
+}
+
+.card-4 {
+    animation-delay: 1.5s;
+}
+
+.card-5 {
+    animation-delay: 2s;
+}
+
+.card-6 {
+    animation-delay: 2.5s;
+}
+
+.card-2::before { animation-delay: 0.5s; }
+.card-3::before { animation-delay: 1s; }
+.card-4::before { animation-delay: 1.5s; }
+.card-5::before { animation-delay: 2s; }
+.card-6::before { animation-delay: 2.5s; }
+
+.interactive-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.gradient-button {
+    position: relative;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+    background-size: 200% 200%;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: buttonGradient 3s ease-in-out infinite;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+}
+
+.gradient-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(255, 107, 107, 0.4);
+}
+
+.gradient-button:active {
+    transform: scale(0.95);
+}
+
+.btn-2 {
+    background: linear-gradient(45deg, #4ecdc4, #45b7d1, #96ceb4);
+    animation-delay: 1s;
+}
+
+.btn-3 {
+    background: linear-gradient(45deg, #feca57, #ff9ff3, #ff6b6b);
+    animation-delay: 2s;
+}
+
+@keyframes buttonGradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.floating-orbs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+    animation: orbFloat 6s ease-in-out infinite;
+}
+
+.orb-1 {
+    width: 100px;
+    height: 100px;
+    top: 10%;
+    left: 10%;
+    animation-duration: 8s;
+}
+
+.orb-2 {
+    width: 150px;
+    height: 150px;
+    top: 60%;
+    right: 15%;
+    animation-duration: 10s;
+    animation-delay: 2s;
+}
+
+.orb-3 {
+    width: 80px;
+    height: 80px;
+    bottom: 20%;
+    left: 20%;
+    animation-duration: 7s;
+    animation-delay: 4s;
+}
+
+@keyframes orbFloat {
+    0%, 100% { 
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 0.3;
+    }
+    33% { 
+        transform: translateY(-30px) translateX(20px) scale(1.1);
+        opacity: 0.6;
+    }
+    66% { 
+        transform: translateY(20px) translateX(-15px) scale(0.9);
+        opacity: 0.4;
+    }
+}
+
+/* Speed variations */
+.speed-slow {
+    animation-duration: 8s !important;
+}
+
+.speed-fast {
+    animation-duration: 2s !important;
+}
+
+.reverse-animation {
+    animation-direction: reverse !important;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .gradient-card {
+        height: 160px;
+    }
+    
+    .card-content .icon {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .card-content h4 {
+        font-size: 1.2rem;
+    }
+    
+    .card-content p {
+        font-size: 0.9rem;
+    }
+    
+    .interactive-buttons {
+        gap: 0.5rem;
+    }
+    
+    .gradient-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .orb-1 {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .orb-2 {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .orb-3 {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cards-grid {
+        gap: 1rem;
+    }
+    
+    .gradient-card {
+        height: 140px;
+    }
+    
+    .interactive-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .gradient-button {
+        width: 200px;
+    }
+}

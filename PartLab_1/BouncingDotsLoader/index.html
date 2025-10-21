@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouncing Dots Loaders</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h3>Bouncing Dots Collection</h3>
+        
+        <div class="dots-grid">
+            <!-- Classic 3 Dots -->
+            <div class="dots-item">
+                <div class="dots-container classic">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+                <span class="dots-label">Classic Bounce</span>
+            </div>
+            
+            <!-- Pulse Dots -->
+            <div class="dots-item">
+                <div class="dots-container pulse">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+                <span class="dots-label">Pulse Wave</span>
+            </div>
+            
+            <!-- Elastic Dots -->
+            <div class="dots-item">
+                <div class="dots-container elastic">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+                <span class="dots-label">Elastic</span>
+            </div>
+            
+            <!-- Orbit Dots -->
+            <div class="dots-item">
+                <div class="dots-container orbit">
+                    <div class="dot center"></div>
+                    <div class="dot orbiting"></div>
+                    <div class="dot orbiting"></div>
+                    <div class="dot orbiting"></div>
+                </div>
+                <span class="dots-label">Orbit</span>
+            </div>
+            
+            <!-- Rainbow Dots -->
+            <div class="dots-item">
+                <div class="dots-container rainbow">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+                <span class="dots-label">Rainbow</span>
+            </div>
+            
+            <!-- Matrix Dots -->
+            <div class="dots-item">
+                <div class="dots-container matrix">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+                <span class="dots-label">Matrix Grid</span>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button class="speed-btn" onclick="changeSpeed('slow')">Slow</button>
+            <button class="speed-btn" onclick="changeSpeed('normal')">Normal</button>
+            <button class="speed-btn" onclick="changeSpeed('fast')">Fast</button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

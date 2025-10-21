@@ -1,0 +1,467 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #2c1810 0%, #5d4037 50%, #3e2723 100%);
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.title {
+    color: #d7ccc8;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    text-align: center;
+    margin-bottom: 40px;
+    text-shadow: 0 2px 10px rgba(215, 204, 200, 0.3);
+    animation: titleSway 3s ease-in-out infinite alternate;
+}
+
+@keyframes titleSway {
+    0% { transform: translateX(-5px); }
+    100% { transform: translateX(5px); }
+}
+
+.fabric-showcase {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.fabric-piece {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    background: linear-gradient(45deg, #8d6e63 0%, #a1887f  50%, #bcaaa4 100%);
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.fabric-piece:hover {
+    transform: scale(1.02);
+}
+
+.fabric-texture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 2px,
+            rgba(255, 255, 255, 0.1) 2px,
+            rgba(255, 255, 255, 0.1) 4px
+        ),
+        repeating-linear-gradient(
+            -45deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 0, 0, 0.1) 2px,
+            rgba(0, 0, 0, 0.1) 4px
+        );
+    opacity: 0.6;
+    transition: all 0.5s ease;
+}
+
+.fabric-content {
+    position: relative;
+    z-index: 5;
+    padding: 40px 30px;
+    text-align: center;
+    color: white;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: all 0.8s ease;
+}
+
+.content-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    animation: iconBob 2s ease-in-out infinite alternate;
+}
+
+@keyframes iconBob {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-8px); }
+}
+
+.fabric-content h4 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.fabric-content p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.tear-line {
+    position: absolute;
+    background: linear-gradient(45deg, transparent 0%, rgba(0, 0, 0, 0.8) 50%, transparent 100%);
+    opacity: 0;
+    z-index: 10;
+    transition: all 0.6s ease;
+    transform-origin: center;
+}
+
+.tear-1 {
+    width: 80px;
+    height: 2px;
+    top: 30%;
+    left: 60%;
+    transform: rotate(25deg);
+    transition-delay: 0.1s;
+}
+
+.tear-2 {
+    width: 60px;
+    height: 1px;
+    top: 45%;
+    left: 70%;
+    transform: rotate(-15deg);
+    transition-delay: 0.2s;
+}
+
+.tear-3 {
+    width: 100px;
+    height: 3px;
+    top: 60%;
+    left: 55%;
+    transform: rotate(35deg);
+    transition-delay: 0.3s;
+}
+
+.tear-4 {
+    width: 40px;
+    height: 1px;
+    top: 75%;
+    left: 75%;
+    transform: rotate(-25deg);
+    transition-delay: 0.4s;
+}
+
+.tear-5 {
+    width: 70px;
+    height: 2px;
+    top: 35%;
+    left: 80%;
+    transform: rotate(10deg);
+    transition-delay: 0.5s;
+}
+
+.fabric-fragment {
+    position: absolute;
+    background: linear-gradient(45deg, #8d6e63 0%, #a1887f 50%, #bcaaa4 100%);
+    opacity: 0;
+    z-index: 6;
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.fragment-1 {
+    width: 60px;
+    height: 30px;
+    top: 25%;
+    right: 20%;
+    clip-path: polygon(0% 0%, 80% 0%, 100% 60%, 20% 100%);
+    transition-delay: 0.2s;
+}
+
+.fragment-2 {
+    width: 40px;
+    height: 25px;
+    top: 50%;
+    right: 15%;
+    clip-path: polygon(0% 20%, 100% 0%, 80% 80%, 0% 100%);
+    transition-delay: 0.4s;
+}
+
+.fragment-3 {
+    width: 50px;
+    height: 35px;
+    top: 70%;
+    right: 25%;
+    clip-path: polygon(20% 0%, 100% 20%, 80% 100%, 0% 80%);
+    transition-delay: 0.6s;
+}
+
+.fragment-4 {
+    width: 35px;
+    height: 20px;
+    top: 40%;
+    right: 10%;
+    clip-path: polygon(0% 0%, 100% 30%, 70% 100%, 0% 70%);
+    transition-delay: 0.8s;
+}
+
+.hidden-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, #ff6f61 0%, #ff8a65 50%, #ffab40 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    opacity: 0;
+    transform: scale(1.2);
+    transition: all 0.8s ease;
+    z-index: 1;
+}
+
+.secret-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    animation: sparkleRotate 2s linear infinite;
+}
+
+@keyframes sparkleRotate {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.2); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+
+.hidden-content h4 {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.hidden-content p {
+    font-size: 1rem;
+    opacity: 0.95;
+}
+
+.sparkle-effects {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.sparkle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(circle, #fff 0%, transparent 70%);
+    border-radius: 50%;
+    animation: sparkleFloat 3s ease-in-out infinite;
+}
+
+.sparkle:nth-child(1) {
+    top: 20%;
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.sparkle:nth-child(2) {
+    top: 30%;
+    right: 25%;
+    animation-delay: -1s;
+}
+
+.sparkle:nth-child(3) {
+    bottom: 30%;
+    left: 30%;
+    animation-delay: -2s;
+}
+
+.sparkle:nth-child(4) {
+    bottom: 25%;
+    right: 20%;
+    animation-delay: -1.5s;
+}
+
+@keyframes sparkleFloat {
+    0%, 100% {
+        transform: translateY(0px) scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateY(-15px) scale(1.5);
+        opacity: 1;
+    }
+}
+
+.interaction-hint {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: #d7ccc8;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    animation: hintFade 4s ease-in-out infinite;
+}
+
+@keyframes hintFade {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 0.3; }
+}
+
+.pulse-indicator {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #d7ccc8;
+    border-radius: 50%;
+    animation: pulseRing 2s ease-out infinite;
+}
+
+@keyframes pulseRing {
+    0% {
+        transform: scale(0.8);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+.floating-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #d7ccc8;
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: particleFloat 8s linear infinite;
+}
+
+.particle:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.particle:nth-child(2) {
+    left: 30%;
+    animation-delay: -2s;
+}
+
+.particle:nth-child(3) {
+    left: 50%;
+    animation-delay: -4s;
+}
+
+.particle:nth-child(4) {
+    left: 70%;
+    animation-delay: -6s;
+}
+
+.particle:nth-child(5) {
+    left: 90%;
+    animation-delay: -1s;
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0.2;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Hover States */
+.fabric-piece:hover .tear-line {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.fabric-piece:hover .fabric-fragment {
+    opacity: 1;
+}
+
+.fabric-piece:hover .fragment-1 {
+    transform: translate(30px, -20px) rotate(25deg);
+}
+
+.fabric-piece:hover .fragment-2 {
+    transform: translate(25px, 15px) rotate(-15deg);
+}
+
+.fabric-piece:hover .fragment-3 {
+    transform: translate(20px, 25px) rotate(30deg);
+}
+
+.fabric-piece:hover .fragment-4 {
+    transform: translate(35px, -10px) rotate(-20deg);
+}
+
+.fabric-piece:hover .fabric-content {
+    opacity: 0.3;
+    transform: scale(0.8);
+}
+
+.fabric-piece:hover .hidden-content {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.fabric-piece:hover .fabric-texture {
+    opacity: 0.2;
+    filter: blur(2px);
+}
+
+@media (max-width: 480px) {
+    .fabric-piece {
+        width: 280px;
+        height: 180px;
+    }
+    
+    .fabric-content {
+        padding: 30px 20px;
+    }
+    
+    .content-icon, .secret-icon {
+        font-size: 2rem;
+    }
+    
+    .fabric-content h4, .hidden-content h4 {
+        font-size: 1.3rem;
+    }
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouncy Checkbox Animation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h3>Bouncy Checkboxes</h3>
+        <div class="checkbox-grid">
+            <div class="checkbox-item">
+                <input type="checkbox" id="task1" class="bouncy-checkbox">
+                <label for="task1">
+                    <div class="checkbox-visual">
+                        <div class="checkmark">✓</div>
+                        <div class="ripple"></div>
+                    </div>
+                    <span class="label-text">Complete Project</span>
+                </label>
+            </div>
+            
+            <div class="checkbox-item">
+                <input type="checkbox" id="task2" class="bouncy-checkbox">
+                <label for="task2">
+                    <div class="checkbox-visual">
+                        <div class="checkmark">✓</div>
+                        <div class="ripple"></div>
+                    </div>
+                    <span class="label-text">Review Code</span>
+                </label>
+            </div>
+            
+            <div class="checkbox-item">
+                <input type="checkbox" id="task3" class="bouncy-checkbox">
+                <label for="task3">
+                    <div class="checkbox-visual">
+                        <div class="checkmark">✓</div>
+                        <div class="ripple"></div>
+                    </div>
+                    <span class="label-text">Deploy App</span>
+                </label>
+            </div>
+            
+            <div class="checkbox-item">
+                <input type="checkbox" id="task4" class="bouncy-checkbox">
+                <label for="task4">
+                    <div class="checkbox-visual">
+                        <div class="checkmark">✓</div>
+                        <div class="ripple"></div>
+                    </div>
+                    <span class="label-text">Write Tests</span>
+                </label>
+            </div>
+            
+            <div class="checkbox-item">
+                <input type="checkbox" id="task5" class="bouncy-checkbox">
+                <label for="task5">
+                    <div class="checkbox-visual">
+                        <div class="checkmark">✓</div>
+                        <div class="ripple"></div>
+                    </div>
+                    <span class="label-text">Update Docs</span>
+                </label>
+            </div>
+            
+            <div class="checkbox-item">
+                <input type="checkbox" id="task6" class="bouncy-checkbox">
+                <label for="task6">
+                    <div class="checkbox-visual">
+                        <div class="checkmark">✓</div>
+                        <div class="ripple"></div>
+                    </div>
+                    <span class="label-text">Team Meeting</span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+            <span class="progress-text" id="progressText">0/6 Complete</span>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

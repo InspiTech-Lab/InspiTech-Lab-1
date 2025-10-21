@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Eclipse Toggle</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h3 class="title">Solar Eclipse Toggle</h3>
+        
+        <div class="eclipse-container">
+            <div class="sun" id="sun">
+                <div class="sun-rays"></div>
+                <div class="sun-core"></div>
+            </div>
+            
+            <div class="moon" id="moon"></div>
+            
+            <div class="corona" id="corona"></div>
+            
+            <div class="stars-field" id="starsField"></div>
+        </div>
+        
+        <div class="toggle-wrapper">
+            <input type="checkbox" id="eclipseToggle" class="toggle-input">
+            <label for="eclipseToggle" class="toggle-label">
+                <span class="toggle-slider">
+                    <span class="toggle-sun">☀️</span>
+                    <span class="toggle-moon">🌙</span>
+                </span>
+            </label>
+        </div>
+        
+        <div class="status-text" id="statusText">
+            Daylight Mode
+        </div>
+        
+        <div class="eclipse-info" id="eclipseInfo">
+            <p>Experience the cosmic dance of celestial bodies</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morphing Hamburger Menu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h3 class="title">Morphing Menu Collection</h3>
+        
+        <!-- Menu 1: Classic Transform -->
+        <div class="menu-section">
+            <div class="menu-container classic">
+                <button class="hamburger-btn" data-menu="classic">
+                    <span class="line line1"></span>
+                    <span class="line line2"></span>
+                    <span class="line line3"></span>
+                </button>
+                <div class="menu-overlay">
+                    <nav class="menu-nav">
+                        <a href="#" class="menu-item">Home</a>
+                        <a href="#" class="menu-item">About</a>
+                        <a href="#" class="menu-item">Services</a>
+                        <a href="#" class="menu-item">Contact</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu 2: Elastic Transform -->
+        <div class="menu-section">
+            <div class="menu-container elastic">
+                <button class="hamburger-btn" data-menu="elastic">
+                    <span class="line line1"></span>
+                    <span class="line line2"></span>
+                    <span class="line line3"></span>
+                </button>
+                <div class="menu-overlay">
+                    <nav class="menu-nav">
+                        <a href="#" class="menu-item">Portfolio</a>
+                        <a href="#" class="menu-item">Blog</a>
+                        <a href="#" class="menu-item">Team</a>
+                        <a href="#" class="menu-item">Careers</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu 3: Spin Transform -->
+        <div class="menu-section">
+            <div class="menu-container spin">
+                <button class="hamburger-btn" data-menu="spin">
+                    <span class="line line1"></span>
+                    <span class="line line2"></span>
+                    <span class="line line3"></span>
+                </button>
+                <div class="menu-overlay">
+                    <nav class="menu-nav">
+                        <a href="#" class="menu-item">Products</a>
+                        <a href="#" class="menu-item">Pricing</a>
+                        <a href="#" class="menu-item">Support</a>
+                        <a href="#" class="menu-item">Login</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu 4: Squeeze Transform -->
+        <div class="menu-section">
+            <div class="menu-container squeeze">
+                <button class="hamburger-btn" data-menu="squeeze">
+                    <span class="line line1"></span>
+                    <span class="line line2"></span>
+                    <span class="line line3"></span>
+                </button>
+                <div class="menu-overlay">
+                    <nav class="menu-nav">
+                        <a href="#" class="menu-item">Gallery</a>
+                        <a href="#" class="menu-item">Events</a>
+                        <a href="#" class="menu-item">News</a>
+                        <a href="#" class="menu-item">Subscribe</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cursor-trail"></div>
+    <script src="script.js"></script>
+</body>
+</html>

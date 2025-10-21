@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Jelly Ripple Interactive Suite</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h3 class="title">Advanced Jelly Ripple Interactive Suite</h3>
+        
+        <!-- Theme Selector -->
+        <div class="theme-selector">
+            <button class="theme-btn active" data-theme="neon">🌈 Neon</button>
+            <button class="theme-btn" data-theme="ocean">🌊 Ocean</button>
+            <button class="theme-btn" data-theme="fire">🔥 Fire</button>
+            <button class="theme-btn" data-theme="cosmic">🌌 Cosmic</button>
+        </div>
+
+        <!-- Button Gallery -->
+        <div class="button-gallery">
+            <!-- Classic Jelly Button -->
+            <div class="button-container">
+                <h4 class="button-title">Classic Jelly</h4>
+                <button class="jelly-button classic-jelly" data-type="classic">
+                    <span class="button-text">Click Me!</span>
+                    <div class="ripple-container"></div>
+                    <div class="jelly-core"></div>
+                </button>
+                <div class="button-stats">
+                    <span class="stat-item">Clicks: <span class="click-count">0</span></span>
+                    <span class="stat-item">Combo: <span class="combo-count">0</span></span>
+                </div>
+            </div>
+
+            <!-- Morphing Jelly Button -->
+            <div class="button-container">
+                <h4 class="button-title">Morphing Jelly</h4>
+                <button class="jelly-button morphing-jelly" data-type="morphing">
+                    <span class="button-text">Transform!</span>
+                    <div class="ripple-container"></div>
+                    <div class="morph-layers">
+                        <div class="morph-layer layer-1"></div>
+                        <div class="morph-layer layer-2"></div>
+                        <div class="morph-layer layer-3"></div>
+                    </div>
+                </button>
+                <div class="button-stats">
+                    <span class="stat-item">Morphs: <span class="click-count">0</span></span>
+                    <span class="stat-item">Level: <span class="combo-count">1</span></span>
+                </div>
+            </div>
+
+            <!-- Liquid Jelly Button -->
+            <div class="button-container">
+                <h4 class="button-title">Liquid Jelly</h4>
+                <button class="jelly-button liquid-jelly" data-type="liquid">
+                    <span class="button-text">Splash!</span>
+                    <div class="ripple-container"></div>
+                    <div class="liquid-surface">
+                        <div class="wave wave-1"></div>
+                        <div class="wave wave-2"></div>
+                        <div class="wave wave-3"></div>
+                    </div>
+                </button>
+                <div class="button-stats">
+                    <span class="stat-item">Splashes: <span class="click-count">0</span></span>
+                    <span class="stat-item">Intensity: <span class="combo-count">Low</span></span>
+                </div>
+            </div>
+
+            <!-- Particle Jelly Button -->
+            <div class="button-container">
+                <h4 class="button-title">Particle Jelly</h4>
+                <button class="jelly-button particle-jelly" data-type="particle">
+                    <span class="button-text">Explode!</span>
+                    <div class="ripple-container"></div>
+                    <div class="particle-emitter"></div>
+                </button>
+                <div class="button-stats">
+                    <span class="stat-item">Explosions: <span class="click-count">0</span></span>
+                    <span class="stat-item">Particles: <span class="combo-count">0</span></span>
+                </div>
+            </div>
+
+            <!-- 3D Jelly Button -->
+            <div class="button-container">
+                <h4 class="button-title">3D Jelly</h4>
+                <button class="jelly-button jelly-3d" data-type="3d">
+                    <span class="button-text">Dimension!</span>
+                    <div class="ripple-container"></div>
+                    <div class="jelly-3d-core">
+                        <div class="face front"></div>
+                        <div class="face back"></div>
+                        <div class="face left"></div>
+                        <div class="face right"></div>
+                        <div class="face top"></div>
+                        <div class="face bottom"></div>
+                    </div>
+                </button>
+                <div class="button-stats">
+                    <span class="stat-item">Rotations: <span class="click-count">0</span></span>
+                    <span class="stat-item">Angle: <span class="combo-count">0°</span></span>
+                </div>
+            </div>
+
+            <!-- Multi-Touch Jelly -->
+            <div class="button-container">
+                <h4 class="button-title">Multi-Touch Jelly</h4>
+                <button class="jelly-button multi-touch-jelly" data-type="multitouch">
+                    <span class="button-text">Multi-Touch!</span>
+                    <div class="ripple-container"></div>
+                    <div class="touch-indicators"></div>
+                </button>
+                <div class="button-stats">
+                    <span class="stat-item">Touches: <span class="click-count">0</span></span>
+                    <span class="stat-item">Max Combo: <span class="combo-count">0</span></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Controls -->
+        <div class="control-panel">
+            <div class="control-group">
+                <label>Jelly Physics:</label>
+                <input type="range" id="jellyIntensity" min="0.5" max="3" step="0.1" value="1">
+                <span class="control-value">1.0x</span>
+            </div>
+            <div class="control-group">
+                <label>Ripple Speed:</label>
+                <input type="range" id="rippleSpeed" min="0.3" max="2" step="0.1" value="0.8">
+                <span class="control-value">0.8x</span>
+            </div>
+            <div class="control-group">
+                <label>Particle Count:</label>
+                <input type="range" id="particleCount" min="5" max="50" step="5" value="20">
+                <span class="control-value">20</span>
+            </div>
+        </div>
+
+        <!-- Achievement System -->
+        <div class="achievement-panel">
+            <h4>Achievements</h4>
+            <div class="achievements">
+                <div class="achievement" data-achievement="first-click">
+                    <span class="achievement-icon">🎯</span>
+                    <span class="achievement-text">First Click</span>
+                </div>
+                <div class="achievement" data-achievement="combo-master">
+                    <span class="achievement-icon">🔥</span>
+                    <span class="achievement-text">Combo Master</span>
+                </div>
+                <div class="achievement" data-achievement="speed-demon">
+                    <span class="achievement-icon">⚡</span>
+                    <span class="achievement-text">Speed Demon</span>
+                </div>
+                <div class="achievement" data-achievement="particle-lord">
+                    <span class="achievement-icon">✨</span>
+                    <span class="achievement-text">Particle Lord</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Global Particle System -->
+        <div class="global-particle-system" id="globalParticles"></div>
+        
+        <!-- Background Effects -->
+        <div class="background-effects">
+            <div class="bg-wave wave-1"></div>
+            <div class="bg-wave wave-2"></div>
+            <div class="bg-wave wave-3"></div>
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>

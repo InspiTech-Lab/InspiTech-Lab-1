@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Wave Loaders</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h3>Wave Loading Animations</h3>
+        
+        <div class="loader-grid">
+            <!-- Classic Sine Wave -->
+            <div class="loader-item">
+                <div class="wave-container classic">
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                </div>
+                <span class="loader-label">Classic Sine</span>
+            </div>
+            
+            <!-- Liquid Wave -->
+            <div class="loader-item">
+                <div class="wave-container liquid">
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="liquid-fill"></div>
+                </div>
+                <span class="loader-label">Liquid Fill</span>
+            </div>
+            
+            <!-- Neon Wave -->
+            <div class="loader-item">
+                <div class="wave-container neon">
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="neon-glow"></div>
+                </div>
+                <span class="loader-label">Neon Glow</span>
+            </div>
+            
+            <!-- Ocean Wave -->
+            <div class="loader-item">
+                <div class="wave-container ocean">
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="foam"></div>
+                </div>
+                <span class="loader-label">Ocean Foam</span>
+            </div>
+            
+            <!-- Gradient Wave -->
+            <div class="loader-item">
+                <div class="wave-container gradient">
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                </div>
+                <span class="loader-label">Gradient</span>
+            </div>
+            
+            <!-- Particle Wave -->
+            <div class="loader-item">
+                <div class="wave-container particle">
+                    <div class="wave"></div>
+                    <div class="particles"></div>
+                </div>
+                <span class="loader-label">Particle</span>
+            </div>
+        </div>
+        
+        <button class="control-btn" onclick="toggleAnimations()">Pause/Resume</button>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: radial-gradient(ellipse at center, #0a0a0a 0%, #000 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Arial', sans-serif;
+    color: white;
+    overflow-x: hidden;
+}
+
+.container {
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+    max-width: 800px;
+}
+
+.title {
+    font-size: clamp(2rem, 6vw, 3rem);
+    font-weight: bold;
+    margin-bottom: 3rem;
+    background: linear-gradient(45deg, #00ffff, #ff00ff, #ffff00);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: neonTextShift 3s ease-in-out infinite;
+    text-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+}
+
+@keyframes neonTextShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.demo-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.neon-card {
+    position: relative;
+    background: rgba(15, 15, 15, 0.8);
+    border-radius: 15px;
+    padding: 2rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.neon-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-content h4 {
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.card-content p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: clamp(0.9rem, 3vw, 1rem);
+}
+
+.neon-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(45deg, transparent, transparent);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+    animation: neonSweep 4s linear infinite;
+}
+
+.neon-card[data-color="cyan"] .neon-border {
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(0, 255, 255, 0.8) 50%,
+        transparent 70%
+    );
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.neon-card[data-color="pink"] .neon-border {
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(255, 0, 255, 0.8) 50%,
+        transparent 70%
+    );
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
+    animation-delay: -1.3s;
+}
+
+.neon-card[data-color="green"] .neon-border {
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(0, 255, 0, 0.8) 50%,
+        transparent 70%
+    );
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+    animation-delay: -2.6s;
+}
+
+@keyframes neonSweep {
+    0% {
+        background: linear-gradient(
+            0deg,
+            transparent 30%,
+            var(--neon-color, rgba(0, 255, 255, 0.8)) 50%,
+            transparent 70%
+        );
+    }
+    25% {
+        background: linear-gradient(
+            90deg,
+            transparent 30%,
+            var(--neon-color, rgba(0, 255, 255, 0.8)) 50%,
+            transparent 70%
+        );
+    }
+    50% {
+        background: linear-gradient(
+            180deg,
+            transparent 30%,
+            var(--neon-color, rgba(0, 255, 255, 0.8)) 50%,
+            transparent 70%
+        );
+    }
+    75% {
+        background: linear-gradient(
+            270deg,
+            transparent 30%,
+            var(--neon-color, rgba(0, 255, 255, 0.8)) 50%,
+            transparent 70%
+        );
+    }
+    100% {
+        background: linear-gradient(
+            360deg,
+            transparent 30%,
+            var(--neon-color, rgba(0, 255, 255, 0.8)) 50%,
+            transparent 70%
+        );
+    }
+}
+
+.neon-button {
+    position: relative;
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: rgba(20, 20, 20, 0.9);
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    font-weight: bold;
+    color: #fff;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.neon-button:hover {
+    transform: scale(1.05);
+    background: rgba(30, 30, 30, 0.9);
+}
+
+.neon-button .neon-border {
+    background: linear-gradient(
+        45deg,
+        transparent 20%,
+        rgba(255, 255, 0, 0.9) 50%,
+        transparent 80%
+    );
+    box-shadow: 0 0 30px rgba(255, 255, 0, 0.5);
+    animation: neonSweep 2s linear infinite;
+}
+
+.neon-button.active .neon-border {
+    animation-duration: 0.8s;
+    box-shadow: 0 0 50px rgba(255, 255, 0, 0.8);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .demo-cards {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .neon-card {
+        padding: 1.5rem;
+    }
+    
+    .title {
+        margin-bottom: 2rem;
+    }
+}
+
+/* Glow effects for enhanced visual impact */
+.neon-card:hover .neon-border {
+    animation-duration: 2s;
+}
+
+.glow-pulse {
+    animation: glowPulse 1s ease-in-out;
+}
+
+@keyframes glowPulse {
+    0%, 100% { box-shadow: 0 0 20px var(--glow-color, rgba(0, 255, 255, 0.3)); }
+    50% { box-shadow: 0 0 60px var(--glow-color, rgba(0, 255, 255, 0.8)); }
+}

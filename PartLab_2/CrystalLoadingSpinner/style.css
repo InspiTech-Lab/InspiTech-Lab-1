@@ -1,0 +1,364 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: radial-gradient(ellipse at center, #0f0f23 0%, #000000 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    perspective: 1000px;
+}
+
+.container {
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+}
+
+.title {
+    color: #8ecae6;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    margin-bottom: 3rem;
+    text-shadow: 0 0 20px rgba(142, 202, 230, 0.5);
+    animation: fadeInUp 1s ease-out;
+}
+
+.crystal-container {
+    position: relative;
+    width: clamp(200px, 40vw, 300px);
+    height: clamp(200px, 40vw, 300px);
+    margin: 0 auto 3rem;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+.crystal {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    animation: crystalRotate 8s linear infinite;
+}
+
+.crystal-face {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(45deg, 
+        rgba(142, 202, 230, 0.1) 0%,
+        rgba(219, 242, 249, 0.2) 25%,
+        rgba(142, 202, 230, 0.1) 50%,
+        rgba(255, 255, 255, 0.3) 75%,
+        rgba(142, 202, 230, 0.1) 100%
+    );
+    border: 1px solid rgba(142, 202, 230, 0.3);
+    backdrop-filter: blur(10px);
+    box-shadow: 
+        inset 0 0 20px rgba(255, 255, 255, 0.1),
+        0 0 20px rgba(142, 202, 230, 0.2);
+}
+
+.front { 
+    transform: rotateY(0deg) translateZ(50px);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.back { 
+    transform: rotateY(180deg) translateZ(50px);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.left { 
+    transform: rotateY(-90deg) translateZ(50px);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.right { 
+    transform: rotateY(90deg) translateZ(50px);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.top { 
+    transform: rotateX(90deg) translateZ(50px);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.bottom { 
+    transform: rotateX(-90deg) translateZ(50px);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.rainbow-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+    animation: ringRotate 6s linear infinite reverse;
+}
+
+.ring-segment {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 3px solid transparent;
+    border-radius: 50%;
+    animation: segmentPulse 2s ease-in-out infinite;
+}
+
+.segment1 { 
+    border-top-color: #ff0080;
+    animation-delay: 0s;
+}
+
+.segment2 { 
+    border-right-color: #8000ff;
+    animation-delay: 0.2s;
+}
+
+.segment3 { 
+    border-bottom-color: #0080ff;
+    animation-delay: 0.4s;
+}
+
+.segment4 { 
+    border-left-color: #00ff80;
+    animation-delay: 0.6s;
+}
+
+.segment5 { 
+    border-top-color: #80ff00;
+    animation-delay: 0.8s;
+    transform: rotate(45deg);
+}
+
+.segment6 { 
+    border-bottom-color: #ff8000;
+    animation-delay: 1s;
+    transform: rotate(45deg);
+}
+
+.loading-text {
+    color: #8ecae6;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 2rem 0;
+}
+
+.loading-dots {
+    display: flex;
+    gap: 0.3rem;
+}
+
+.loading-dots span {
+    width: 8px;
+    height: 8px;
+    background: #8ecae6;
+    border-radius: 50%;
+    animation: dotFloat 1.5s ease-in-out infinite;
+    box-shadow: 0 0 10px rgba(142, 202, 230, 0.5);
+}
+
+.loading-dots span:nth-child(1) { animation-delay: 0s; }
+.loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+.loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+.loading-dots span:nth-child(4) { animation-delay: 0.6s; }
+
+.particle-system {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: radial-gradient(circle, #ffffff, transparent);
+    border-radius: 50%;
+    animation: particleOrbit 10s linear infinite;
+}
+
+.particle:nth-child(1) { 
+    animation-delay: 0s;
+    animation-duration: 8s;
+}
+
+.particle:nth-child(2) { 
+    animation-delay: -2s;
+    animation-duration: 10s;
+}
+
+.particle:nth-child(3) { 
+    animation-delay: -4s;
+    animation-duration: 12s;
+}
+
+.particle:nth-child(4) { 
+    animation-delay: -1s;
+    animation-duration: 9s;
+}
+
+.particle:nth-child(5) { 
+    animation-delay: -3s;
+    animation-duration: 11s;
+}
+
+.particle:nth-child(6) { 
+    animation-delay: -5s;
+    animation-duration: 7s;
+}
+
+.refraction-beams {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    pointer-events: none;
+}
+
+.beam {
+    position: absolute;
+    width: 2px;
+    height: 100px;
+    background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.8), transparent);
+    transform-origin: bottom center;
+    animation: beamRotate 4s linear infinite;
+}
+
+.beam1 { 
+    background: linear-gradient(to bottom, transparent, rgba(255, 0, 128, 0.6), transparent);
+    animation-delay: 0s;
+}
+
+.beam2 { 
+    background: linear-gradient(to bottom, transparent, rgba(0, 128, 255, 0.6), transparent);
+    animation-delay: -1.3s;
+}
+
+.beam3 { 
+    background: linear-gradient(to bottom, transparent, rgba(128, 255, 0, 0.6), transparent);
+    animation-delay: -2.7s;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes crystalRotate {
+    from { transform: rotateX(0deg) rotateY(0deg); }
+    to { transform: rotateX(360deg) rotateY(360deg); }
+}
+
+@keyframes ringRotate {
+    from { transform: translate(-50%, -50%) rotateZ(0deg); }
+    to { transform: translate(-50%, -50%) rotateZ(360deg); }
+}
+
+@keyframes segmentPulse {
+    0%, 100% { 
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+@keyframes dotFloat {
+    0%, 100% { 
+        transform: translateY(0px);
+        opacity: 0.5;
+    }
+    50% { 
+        transform: translateY(-10px);
+        opacity: 1;
+    }
+}
+
+@keyframes particleOrbit {
+    0% {
+        transform: rotate(0deg) translateX(100px) rotate(0deg);
+        opacity: 0;
+    }
+    10%, 90% {
+        opacity: 1;
+    }
+    100% {
+        transform: rotate(360deg) translateX(100px) rotate(-360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes beamRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .crystal-container {
+        width: 200px;
+        height: 200px;
+        margin-bottom: 2rem;
+    }
+    
+    .rainbow-ring {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .title {
+        margin-bottom: 2rem;
+    }
+    
+    .crystal-face {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .front, .back, .left, .right, .top, .bottom {
+        transform-origin: center;
+    }
+}
+
+/* High performance mode for slower devices */
+@media (prefers-reduced-motion: reduce) {
+    .crystal,
+    .rainbow-ring,
+    .particle,
+    .beam {
+        animation-duration: 10s;
+    }
+}

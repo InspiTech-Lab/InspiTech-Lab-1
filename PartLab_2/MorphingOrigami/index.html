@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Morphing Origami Gallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h3 class="title">Advanced Morphing Origami Gallery</h3>
+        
+        <!-- Control Panel -->
+        <div class="control-panel">
+            <button class="control-btn active" data-mode="auto">Auto Mode</button>
+            <button class="control-btn" data-mode="manual">Manual</button>
+            <button class="control-btn" data-mode="chain">Chain React</button>
+            <div class="speed-control">
+                <label>Speed:</label>
+                <input type="range" id="speedSlider" min="0.5" max="3" step="0.1" value="1">
+            </div>
+        </div>
+
+        <!-- Origami Gallery -->
+        <div class="origami-gallery">
+            <!-- Card Style 1: Classic Fold -->
+            <div class="origami-card card-style-1" data-card="1">
+                <div class="fold-container">
+                    <div class="fold fold-1"></div>
+                    <div class="fold fold-2"></div>
+                    <div class="fold fold-3"></div>
+                    <div class="fold fold-4"></div>
+                </div>
+                <div class="content">
+                    <div class="icon">🎨</div>
+                    <h4>Creative Design</h4>
+                    <p>Unfold your imagination</p>
+                    <div class="stats">
+                        <span class="stat">✨ Premium</span>
+                        <span class="stat">🔥 Trending</span>
+                    </div>
+                </div>
+                <div class="card-glow"></div>
+            </div>
+
+            <!-- Card Style 2: Hexagon Fold -->
+            <div class="origami-card card-style-2" data-card="2">
+                <div class="fold-container">
+                    <div class="fold fold-1"></div>
+                    <div class="fold fold-2"></div>
+                    <div class="fold fold-3"></div>
+                    <div class="fold fold-4"></div>
+                    <div class="fold fold-5"></div>
+                    <div class="fold fold-6"></div>
+                </div>
+                <div class="content">
+                    <div class="icon">⚡</div>
+                    <h4>Lightning Fast</h4>
+                    <p>Speed of innovation</p>
+                    <div class="progress-ring">
+                        <svg class="progress-ring-svg" width="60" height="60">
+                            <circle class="progress-ring-circle" cx="30" cy="30" r="25"></circle>
+                        </svg>
+                        <span class="progress-text">85%</span>
+                    </div>
+                </div>
+                <div class="card-glow"></div>
+            </div>
+
+            <!-- Card Style 3: Spiral Fold -->
+            <div class="origami-card card-style-3" data-card="3">
+                <div class="fold-container">
+                    <div class="fold fold-spiral-1"></div>
+                    <div class="fold fold-spiral-2"></div>
+                    <div class="fold fold-spiral-3"></div>
+                    <div class="fold fold-spiral-4"></div>
+                    <div class="fold fold-spiral-5"></div>
+                </div>
+                <div class="content">
+                    <div class="icon">🌟</div>
+                    <h4>Stellar Quality</h4>
+                    <p>Beyond expectations</p>
+                    <div class="rating">
+                        <span class="star active">★</span>
+                        <span class="star active">★</span>
+                        <span class="star active">★</span>
+                        <span class="star active">★</span>
+                        <span class="star active">★</span>
+                    </div>
+                </div>
+                <div class="card-glow"></div>
+            </div>
+
+ 
+        </div>
+
+ 
+        <!-- Particle System -->
+        <div class="particle-system" id="particleSystem"></div>
+        
+        <!-- Sound Visualizer -->
+        <div class="sound-visualizer">
+            <div class="bar" style="--delay: 0s"></div>
+            <div class="bar" style="--delay: 0.1s"></div>
+            <div class="bar" style="--delay: 0.2s"></div>
+            <div class="bar" style="--delay: 0.3s"></div>
+            <div class="bar" style="--delay: 0.4s"></div>
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>

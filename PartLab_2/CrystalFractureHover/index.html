@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crystal Fracture Hover Effect</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="crystal-showcase">
+            <h3 class="title">Crystal Fracture</h3>
+            
+            <div class="crystal-grid">
+                <div class="crystal-card" data-crystal="diamond">
+                    <div class="crystal-surface">
+                        <div class="fracture-overlay">
+                            <div class="fracture-line" style="--angle: 23deg; --delay: 0s;"></div>
+                            <div class="fracture-line" style="--angle: 67deg; --delay: 0.1s;"></div>
+                            <div class="fracture-line" style="--angle: 145deg; --delay: 0.2s;"></div>
+                            <div class="fracture-line" style="--angle: 89deg; --delay: 0.15s;"></div>
+                        </div>
+                        <div class="crystal-content">
+                            <div class="crystal-icon">💎</div>
+                            <span>Diamond</span>
+                        </div>
+                        <div class="reflection-layer"></div>
+                    </div>
+                </div>
+                
+                <div class="crystal-card" data-crystal="emerald">
+                    <div class="crystal-surface">
+                        <div class="fracture-overlay">
+                            <div class="fracture-line" style="--angle: 45deg; --delay: 0s;"></div>
+                            <div class="fracture-line" style="--angle: 135deg; --delay: 0.1s;"></div>
+                            <div class="fracture-line" style="--angle: 90deg; --delay: 0.2s;"></div>
+                            <div class="fracture-line" style="--angle: 180deg; --delay: 0.15s;"></div>
+                        </div>
+                        <div class="crystal-content">
+                            <div class="crystal-icon">🟢</div>
+                            <span>Emerald</span>
+                        </div>
+                        <div class="reflection-layer"></div>
+                    </div>
+                </div>
+                
+                <div class="crystal-card" data-crystal="sapphire">
+                    <div class="crystal-surface">
+                        <div class="fracture-overlay">
+                            <div class="fracture-line" style="--angle: 30deg; --delay: 0s;"></div>
+                            <div class="fracture-line" style="--angle: 120deg; --delay: 0.1s;"></div>
+                            <div class="fracture-line" style="--angle: 75deg; --delay: 0.2s;"></div>
+                            <div class="fracture-line" style="--angle: 160deg; --delay: 0.15s;"></div>
+                        </div>
+                        <div class="crystal-content">
+                            <div class="crystal-icon">🔵</div>
+                            <span>Sapphire</span>
+                        </div>
+                        <div class="reflection-layer"></div>
+                    </div>
+                </div>
+                
+                <div class="crystal-card" data-crystal="ruby">
+                    <div class="crystal-surface">
+                        <div class="fracture-overlay">
+                            <div class="fracture-line" style="--angle: 15deg; --delay: 0s;"></div>
+                            <div class="fracture-line" style="--angle: 105deg; --delay: 0.1s;"></div>
+                            <div class="fracture-line" style="--angle: 165deg; --delay: 0.2s;"></div>
+                            <div class="fracture-line" style="--angle: 50deg; --delay: 0.15s;"></div>
+                        </div>
+                        <div class="crystal-content">
+                            <div class="crystal-icon">🔴</div>
+                            <span>Ruby</span>
+                        </div>
+                        <div class="reflection-layer"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="interaction-hint">
+                <p>Hover or tap to fracture crystals</p>
+                <div class="pulse-indicator"></div>
+            </div>
+        </div>
+        
+        <div class="background-crystals">
+            <div class="bg-crystal" style="--x: 10%; --y: 20%; --delay: 0s;">✨</div>
+            <div class="bg-crystal" style="--x: 80%; --y: 30%; --delay: 2s;">💫</div>
+            <div class="bg-crystal" style="--x: 15%; --y: 70%; --delay: 4s;">⭐</div>
+            <div class="bg-crystal" style="--x: 85%; --y: 80%; --delay: 6s;">🌟</div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

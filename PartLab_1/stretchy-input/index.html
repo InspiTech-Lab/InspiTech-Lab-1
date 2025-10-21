@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stretchy Input Fields</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="aurora-bg"></div>
+        <div class="content">
+            <h3>🎯 Stretchy Forms</h3>
+            <p>Watch these inputs come to life when you focus!</p>
+            
+            <div class="form-grid">
+                <div class="input-group">
+                    <div class="stretchy-wrapper" data-style="elastic">
+                        <input type="text" class="stretchy-input" placeholder=" ">
+                        <label class="stretchy-label">Your Name</label>
+                        <div class="input-highlight"></div>
+                        <span class="input-icon">👤</span>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <div class="stretchy-wrapper" data-style="wave">
+                        <input type="email" class="stretchy-input" placeholder=" ">
+                        <label class="stretchy-label">Email Address</label>
+                        <div class="input-highlight"></div>
+                        <span class="input-icon">📧</span>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <div class="stretchy-wrapper" data-style="glow">
+                        <input type="tel" class="stretchy-input" placeholder=" ">
+                        <label class="stretchy-label">Phone Number</label>
+                        <div class="input-highlight"></div>
+                        <span class="input-icon">📱</span>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <div class="stretchy-wrapper" data-style="morph">
+                        <input type="password" class="stretchy-input" placeholder=" ">
+                        <label class="stretchy-label">Password</label>
+                        <div class="input-highlight"></div>
+                        <span class="input-icon">🔒</span>
+                    </div>
+                </div>
+                
+                <div class="input-group full-width">
+                    <div class="stretchy-wrapper" data-style="rainbow">
+                        <textarea class="stretchy-input textarea" placeholder=" " rows="3"></textarea>
+                        <label class="stretchy-label">Message</label>
+                        <div class="input-highlight"></div>
+                        <span class="input-icon">💬</span>
+                    </div>
+                </div>
+<!--                 
+                <div class="input-group full-width">
+                    <div class="stretchy-wrapper" data-style="pulse">
+                        <select class="stretchy-input">
+                            <option value="" disabled selected hidden></option>
+                            <option value="web">Inspiration & Technology</option>
+                            <option value="mobile">Mobile Apps</option>
+                            <option value="design">UI/UX Design</option>
+                            <option value="marketing">Digital Marketing</option>
+                        </select>
+                        <label class="stretchy-label">Service Interested</label>
+                        <div class="input-highlight"></div>
+                        <span class="input-icon">⚡</span>
+                    </div>
+                </div> -->
+            </div>
+            
+            <div class="submit-wrapper">
+                <button class="stretchy-submit">
+                    <span class="submit-text">Send Message</span>
+                    <div class="submit-ripple"></div>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

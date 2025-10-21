@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radial Progress Bar Collection</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h3>Radial Progress Bars</h3>
+        
+        <div class="progress-grid">
+            <!-- Standard Progress Bar -->
+            <div class="progress-item">
+                <div class="progress-circle" data-progress="75">
+                    <div class="progress-fill"></div>
+                    <div class="progress-text">75%</div>
+                </div>
+                <span class="progress-label">Standard</span>
+            </div>
+            
+            <!-- Gradient Progress Bar -->
+            <div class="progress-item">
+                <div class="progress-circle gradient" data-progress="60">
+                    <div class="progress-fill"></div>
+                    <div class="progress-text">60%</div>
+                </div>
+                <span class="progress-label">Gradient</span>
+            </div>
+            
+            <!-- Neon Progress Bar -->
+            <div class="progress-item">
+                <div class="progress-circle neon" data-progress="90">
+                    <div class="progress-fill"></div>
+                    <div class="progress-text">90%</div>
+                </div>
+                <span class="progress-label">Neon</span>
+            </div>
+            
+            <!-- Multi-layer Progress Bar -->
+            <div class="progress-item">
+                <div class="progress-circle multi" data-progress="45">
+                    <div class="progress-fill"></div>
+                    <div class="progress-inner" data-progress="30"></div>
+                    <div class="progress-text">45%</div>
+                </div>
+                <span class="progress-label">Multi-layer</span>
+            </div>
+            
+            <!-- Pulsing Progress Bar -->
+            <div class="progress-item">
+                <div class="progress-circle pulse" data-progress="80">
+                    <div class="progress-fill"></div>
+                    <div class="progress-text">80%</div>
+                </div>
+                <span class="progress-label">Pulsing</span>
+            </div>
+            
+            <!-- Glowing Progress Bar -->
+            <div class="progress-item">
+                <div class="progress-circle glow" data-progress="95">
+                    <div class="progress-fill"></div>
+                    <div class="progress-text">95%</div>
+                </div>
+                <span class="progress-label">Glowing</span>
+            </div>
+        </div>
+        
+        <button class="reset-btn" onclick="resetProgress()">Reset All</button>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

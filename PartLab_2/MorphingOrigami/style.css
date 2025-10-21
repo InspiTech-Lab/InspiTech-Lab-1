@@ -1,0 +1,715 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255,255,255,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(255,107,107,0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.title {
+    color: white;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    text-align: center;
+    margin-bottom: 2rem;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    background: linear-gradient(45deg, #fff, #f0f0f0, #fff);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: titleShimmer 3s ease-in-out infinite;
+}
+
+@keyframes titleShimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.control-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 15px;
+}
+
+.control-btn {
+    padding: 10px 20px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 25px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.control-btn:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+.control-btn.active {
+    background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+    box-shadow: 0 8px 25px rgba(255,107,107,0.4);
+}
+
+.speed-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-weight: 500;
+}
+
+#speedSlider {
+    width: 80px;
+    height: 4px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+}
+
+.origami-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 2rem;
+    perspective: 1000px;
+}
+
+.origami-card {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.fold-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.fold {
+    position: absolute;
+    border-radius: 12px;
+    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Card Style 1: Classic 4-Fold */
+.card-style-1 .fold {
+    width: 50%;
+    height: 50%;
+}
+
+.card-style-1 .fold-1 {
+    top: 0;
+    left: 0;
+    background: linear-gradient(135deg, #ff9a9e, #fecfef, #fecfef);
+    transform-origin: bottom right;
+}
+
+.card-style-1 .fold-2 {
+    top: 0;
+    right: 0;
+    background: linear-gradient(135deg, #a8edea, #fed6e3, #a8edea);
+    transform-origin: bottom left;
+}
+
+.card-style-1 .fold-3 {
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(135deg, #ffecd2, #fcb69f, #ffecd2);
+    transform-origin: top right;
+}
+
+.card-style-1 .fold-4 {
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(135deg, #a8c8ec, #f093fb, #a8c8ec);
+    transform-origin: top left;
+}
+
+/* Card Style 2: Hexagon 6-Fold */
+.card-style-2 .fold {
+    width: 33.33%;
+    height: 50%;
+}
+
+.card-style-2 .fold-1 {
+    top: 0;
+    left: 0;
+    background: linear-gradient(60deg, #667eea, #764ba2);
+    transform-origin: center bottom;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+.card-style-2 .fold-2 {
+    top: 0;
+    left: 33.33%;
+    background: linear-gradient(60deg, #f093fb, #f5576c);
+    transform-origin: center bottom;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+.card-style-2 .fold-3 {
+    top: 0;
+    right: 0;
+    background: linear-gradient(60deg, #4facfe, #00f2fe);
+    transform-origin: center bottom;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+.card-style-2 .fold-4 {
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(-60deg, #43e97b, #38f9d7);
+    transform-origin: center top;
+    clip-path: polygon(50% 0, 0 100%, 100% 100%);
+}
+
+.card-style-2 .fold-5 {
+    bottom: 0;
+    left: 33.33%;
+    background: linear-gradient(-60deg, #fa709a, #fee140);
+    transform-origin: center top;
+    clip-path: polygon(50% 0, 0 100%, 100% 100%);
+}
+
+.card-style-2 .fold-6 {
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(-60deg, #a8edea, #fed6e3);
+    transform-origin: center top;
+    clip-path: polygon(50% 0, 0 100%, 100% 100%);
+}
+
+/* Card Style 3: Spiral Fold */
+.card-style-3 .fold-spiral-1 {
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+    transform-origin: center;
+    border-radius: 50%;
+}
+
+.card-style-3 .fold-spiral-2 {
+    top: 20%;
+    left: 20%;
+    width: 60%;
+    height: 60%;
+    background: linear-gradient(45deg, #4facfe, #00f2fe);
+    transform-origin: center;
+    border-radius: 50%;
+}
+
+.card-style-3 .fold-spiral-3 {
+    top: 30%;
+    left: 30%;
+    width: 40%;
+    height: 40%;
+    background: linear-gradient(45deg, #43e97b, #38f9d7);
+    transform-origin: center;
+    border-radius: 50%;
+}
+
+.card-style-3 .fold-spiral-4 {
+    top: 40%;
+    left: 40%;
+    width: 20%;
+    height: 20%;
+    background: linear-gradient(45deg, #fa709a, #fee140);
+    transform-origin: center;
+    border-radius: 50%;
+}
+
+.card-style-3 .fold-spiral-5 {
+    top: 45%;
+    left: 45%;
+    width: 10%;
+    height: 10%;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    transform-origin: center;
+    border-radius: 50%;
+}
+
+/* Card Style 4: Diamond Fold */
+.card-style-4 .fold-diamond-1 {
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    transform-origin: bottom left;
+    clip-path: polygon(0 100%, 50% 0, 100% 100%);
+}
+
+.card-style-4 .fold-diamond-2 {
+    top: 50%;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+    transform-origin: top left;
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+.card-style-4 .fold-diamond-3 {
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    transform-origin: top right;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+.card-style-4 .fold-diamond-4 {
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(135deg, #43e97b, #38f9d7);
+    transform-origin: bottom right;
+    clip-path: polygon(100% 0, 100% 100%, 0 50%);
+}
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    z-index: 10;
+    opacity: 0;
+    transition: all 0.8s ease;
+    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+.content h4 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.content p {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 1rem;
+}
+
+.stats {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.stat {
+    background: rgba(255,255,255,0.2);
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.progress-ring {
+    position: relative;
+    display: inline-block;
+}
+
+.progress-ring-svg {
+    transform: rotate(-90deg);
+}
+
+.progress-ring-circle {
+    fill: none;
+    stroke: rgba(255,255,255,0.3);
+    stroke-width: 3;
+    stroke-dasharray: 157;
+    stroke-dashoffset: 40;
+    animation: progressRing 2s ease-in-out infinite;
+}
+
+@keyframes progressRing {
+    0% { stroke-dashoffset: 157; }
+    100% { stroke-dashoffset: 40; }
+}
+
+.progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.rating {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+
+.star {
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.3);
+    transition: all 0.3s ease;
+}
+
+.star.active {
+    color: #ffd700;
+    animation: starTwinkle 1s ease-in-out infinite;
+}
+
+@keyframes starTwinkle {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+.luxury-badge {
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    color: #333;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(255,215,0,0.4);
+}
+
+.card-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+/* Unfolded States */
+.origami-card.unfolded .content {
+    opacity: 1;
+}
+
+.origami-card.unfolded .card-glow {
+    opacity: 1;
+    animation: glowPulse 2s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
+}
+
+/* Card Style 1 Unfolded */
+.card-style-1.unfolded .fold-1 {
+    transform: rotateY(-120deg) rotateX(15deg) translateZ(20px);
+}
+
+.card-style-1.unfolded .fold-2 {
+    transform: rotateY(120deg) rotateX(15deg) translateZ(20px);
+}
+
+.card-style-1.unfolded .fold-3 {
+    transform: rotateY(-120deg) rotateX(-15deg) translateZ(20px);
+}
+
+.card-style-1.unfolded .fold-4 {
+    transform: rotateY(120deg) rotateX(-15deg) translateZ(20px);
+}
+
+/* Card Style 2 Unfolded */
+.card-style-2.unfolded .fold-1 {
+    transform: rotateX(-60deg) translateZ(30px);
+}
+
+.card-style-2.unfolded .fold-2 {
+    transform: rotateX(-80deg) translateZ(25px);
+}
+
+.card-style-2.unfolded .fold-3 {
+    transform: rotateX(-100deg) translateZ(20px);
+}
+
+.card-style-2.unfolded .fold-4 {
+    transform: rotateX(60deg) translateZ(30px);
+}
+
+.card-style-2.unfolded .fold-5 {
+    transform: rotateX(80deg) translateZ(25px);
+}
+
+.card-style-2.unfolded .fold-6 {
+    transform: rotateX(100deg) translateZ(20px);
+}
+
+/* Card Style 3 Unfolded */
+.card-style-3.unfolded .fold-spiral-1 {
+    transform: rotateZ(180deg) scale(1.2) translateZ(10px);
+}
+
+.card-style-3.unfolded .fold-spiral-2 {
+    transform: rotateZ(-180deg) scale(1.1) translateZ(20px);
+}
+
+.card-style-3.unfolded .fold-spiral-3 {
+    transform: rotateZ(360deg) scale(1.3) translateZ(30px);
+}
+
+.card-style-3.unfolded .fold-spiral-4 {
+    transform: rotateZ(-360deg) scale(1.5) translateZ(40px);
+}
+
+.card-style-3.unfolded .fold-spiral-5 {
+    transform: rotateZ(720deg) scale(2) translateZ(50px);
+}
+
+/* Card Style 4 Unfolded */
+.card-style-4.unfolded .fold-diamond-1 {
+    transform: rotateY(-90deg) rotateZ(45deg) translateZ(25px);
+}
+
+.card-style-4.unfolded .fold-diamond-2 {
+    transform: rotateY(90deg) rotateZ(-45deg) translateZ(25px);
+}
+
+.card-style-4.unfolded .fold-diamond-3 {
+    transform: rotateY(-90deg) rotateZ(-45deg) translateZ(25px);
+}
+
+.card-style-4.unfolded .fold-diamond-4 {
+    transform: rotateY(90deg) rotateZ(45deg) translateZ(25px);
+}
+
+.interaction-panel {
+    text-align: center;
+    margin: 2rem 0;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.hint-text {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.gesture-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.gesture {
+    font-size: 2rem;
+    animation: gestureFloat 2s ease-in-out infinite;
+}
+
+.gesture:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.gesture:nth-child(3) {
+    animation-delay: 1s;
+}
+
+@keyframes gestureFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.particle-system {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: radial-gradient(circle, #fff, transparent);
+    border-radius: 50%;
+    animation: particleFloat 3s ease-out forwards;
+}
+
+@keyframes particleFloat {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100px) scale(0);
+    }
+}
+
+.sound-visualizer {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 3px;
+    z-index: 100;
+}
+
+.bar {
+    width: 4px;
+    height: 20px;
+    background: linear-gradient(to top, #ff6b6b, #4facfe);
+    border-radius: 2px;
+    animation: soundWave 1s ease-in-out infinite;
+    animation-delay: var(--delay);
+}
+
+@keyframes soundWave {
+    0%, 100% { height: 20px; }
+    50% { height: 40px; }
+}
+
+/* Hover Effects */
+.origami-card:hover {
+    transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.origami-card:hover .card-glow {
+    opacity: 0.7;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .title {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .origami-gallery {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .origami-card {
+        height: 280px;
+    }
+    
+    .control-panel {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .content {
+        padding: 15px;
+    }
+    
+    .content h4 {
+        font-size: 1.2rem;
+    }
+    
+    .content p {
+        font-size: 0.9rem;
+    }
+    
+    .icon {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .origami-card {
+        height: 250px;
+    }
+    
+    .title {
+        font-size: 1.5rem;
+    }
+    
+    .gesture-icons {
+        gap: 15px;
+    }
+    
+    .gesture {
+        font-size: 1.5rem;
+    }
+}

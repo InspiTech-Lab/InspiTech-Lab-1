@@ -1,0 +1,351 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #0c0c14;
+    color: white;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+.container {
+    position: relative;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.aurora-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(ellipse at top, rgba(147,51,234,0.3), transparent 50%),
+        radial-gradient(ellipse at bottom left, rgba(79,70,229,0.3), transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(236,72,153,0.3), transparent 50%);
+    animation: auroraMove 15s ease-in-out infinite alternate;
+}
+
+@keyframes auroraMove {
+    0% { filter: brightness(1) hue-rotate(0deg); }
+    100% { filter: brightness(1.3) hue-rotate(30deg); }
+}
+
+.content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+}
+
+h3 {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(45deg, #8b5cf6, #06b6d4, #10b981);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+    0% { filter: brightness(1); }
+    100% { filter: brightness(1.2) drop-shadow(0 0 20px rgba(139,92,246,0.3)); }
+}
+
+p {
+    font-size: clamp(1.1rem, 4vw, 1.3rem);
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 3rem;
+    animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.input-group {
+    position: relative;
+    animation: slideInUp 0.8s ease-out both;
+}
+
+.input-group:nth-child(1) { animation-delay: 0.1s; }
+.input-group:nth-child(2) { animation-delay: 0.2s; }
+.input-group:nth-child(3) { animation-delay: 0.3s; }
+.input-group:nth-child(4) { animation-delay: 0.4s; }
+.input-group:nth-child(5) { animation-delay: 0.5s; }
+.input-group:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes slideInUp {
+    from { opacity: 0; transform: translateY(50px) scale(0.9); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.stretchy-wrapper {
+    position: relative;
+    background: rgba(255,255,255,0.05);
+    border-radius: 15px;
+    border: 2px solid transparent;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.stretchy-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(139,92,246,0.1), rgba(6,182,212,0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.stretchy-input {
+    width: 100%;
+    padding: 1.5rem 3.5rem 1.5rem 1.5rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: clamp(1rem, 4vw, 1.1rem);
+    color: white;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.stretchy-input.textarea {
+    resize: none;
+    min-height: 120px;
+    padding-top: 2rem;
+}
+
+.stretchy-input::placeholder {
+    color: transparent;
+}
+
+.stretchy-label {
+    position: absolute;
+    left: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: clamp(1rem, 4vw, 1.1rem);
+    color: rgba(255,255,255,0.6);
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 3;
+}
+
+.stretchy-input:focus + .stretchy-label,
+.stretchy-input:not(:placeholder-shown) + .stretchy-label {
+    top: 0.8rem;
+    font-size: 0.85rem;
+    color: #8b5cf6;
+    transform: translateY(0);
+}
+
+.textarea:focus + .stretchy-label,
+.textarea:not(:placeholder-shown) + .stretchy-label {
+    top: 1rem;
+}
+
+.input-highlight {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(45deg, #8b5cf6, #06b6d4);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-50%);
+}
+
+.stretchy-input:focus ~ .input-highlight {
+    width: 100%;
+}
+
+.input-icon {
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    z-index: 3;
+}
+
+.stretchy-input:focus ~ * .input-icon {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Stretchy animation styles */
+.stretchy-wrapper:focus-within {
+    transform: scale(1.02);
+    border-color: rgba(139,92,246,0.5);
+    box-shadow: 0 20px 40px rgba(139,92,246,0.2);
+}
+
+.stretchy-wrapper:focus-within::before {
+    opacity: 1;
+}
+
+/* Style variants */
+.stretchy-wrapper[data-style="elastic"]:focus-within {
+    animation: elasticPulse 0.6s ease-out;
+}
+
+@keyframes elasticPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1.02); }
+}
+
+.stretchy-wrapper[data-style="wave"]:focus-within {
+    animation: wave 1s ease-in-out;
+}
+
+@keyframes wave {
+    0%, 100% { transform: scale(1.02) rotateX(0deg); }
+    25% { transform: scale(1.02) rotateX(1deg); }
+    75% { transform: scale(1.02) rotateX(-1deg); }
+}
+
+.stretchy-wrapper[data-style="glow"]:focus-within {
+    box-shadow: 0 0 30px rgba(6,182,212,0.4), 0 20px 40px rgba(6,182,212,0.2);
+    border-color: rgba(6,182,212,0.5);
+}
+
+.stretchy-wrapper[data-style="morph"]:focus-within {
+    border-radius: 25px;
+    animation: morph 0.8s ease-in-out;
+}
+
+@keyframes morph {
+    0% { border-radius: 15px; }
+    50% { border-radius: 30px; }
+    100% { border-radius: 25px; }
+}
+
+.stretchy-wrapper[data-style="rainbow"]:focus-within {
+    border-color: transparent;
+    background-image: linear-gradient(45deg, rgba(236,72,153,0.1), rgba(147,51,234,0.1), rgba(79,70,229,0.1));
+    animation: rainbow 2s ease-in-out infinite;
+}
+
+@keyframes rainbow {
+    0%, 100% { filter: hue-rotate(0deg); }
+    33% { filter: hue-rotate(120deg); }
+    66% { filter: hue-rotate(240deg); }
+}
+
+.stretchy-wrapper[data-style="pulse"]:focus-within {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 20px 40px rgba(139,92,246,0.2); }
+    50% { box-shadow: 0 25px 50px rgba(139,92,246,0.4); }
+}
+
+.submit-wrapper {
+    margin-top: 2rem;
+    animation: slideInUp 0.8s ease-out 0.7s both;
+}
+
+.stretchy-submit {
+    position: relative;
+    padding: 1.5rem 3rem;
+    font-size: clamp(1.1rem, 4vw, 1.2rem);
+    font-weight: 700;
+    background: linear-gradient(45deg, #8b5cf6, #06b6d4);
+    border: none;
+    border-radius: 50px;
+    color: white;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 30px rgba(139,92,246,0.3);
+}
+
+.stretchy-submit:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 20px 40px rgba(139,92,246,0.4);
+}
+
+.stretchy-submit:active {
+    transform: translateY(-1px) scale(1.02);
+}
+
+.submit-ripple {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.4s, height 0.4s;
+}
+
+.stretchy-submit.clicked .submit-ripple {
+    width: 300px;
+    height: 300px;
+}
+
+@media (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .container {
+        padding: 1.5rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stretchy-input {
+        padding: 1.2rem 3rem 1.2rem 1.2rem;
+    }
+    
+    .stretchy-label {
+        left: 1.2rem;
+    }
+    
+    .input-icon {
+        right: 1.2rem;
+    }
+    
+    .stretchy-submit {
+        padding: 1.2rem 2.5rem;
+    }
+}

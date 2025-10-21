@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draggable Slider with Spring</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h3>Draggable Spring Slider</h3>
+        <div class="slider-container">
+            <div class="slider-track">
+                <div class="slider-thumb" id="sliderThumb">
+                    <div class="thumb-glow"></div>
+                    <span class="thumb-value">50</span>
+                </div>
+            </div>
+            <div class="value-display">
+                <span id="valueText">50</span>%
+            </div>
+        </div>
+        <div class="particles" id="particles"></div>
+        <div class="demo-actions">
+            <button class="demo-btn" onclick="animateToValue(25)">25%</button>
+            <button class="demo-btn" onclick="animateToValue(75)">75%</button>
+            <button class="demo-btn" onclick="animateToValue(100)">100%</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

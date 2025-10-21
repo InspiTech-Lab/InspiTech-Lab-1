@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.container {
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+}
+
+.title {
+    color: white;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    margin-bottom: 3rem;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    animation: fadeInUp 1s ease-out;
+}
+
+.magnetic-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 4rem 0;
+    perspective: 1000px;
+}
+
+.letter {
+    display: inline-block;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-origin: center;
+    will-change: transform;
+    position: relative;
+}
+
+.letter:hover {
+    transform: scale(1.2) rotateY(15deg);
+    text-shadow: 0 0 30px rgba(255,255,255,0.8);
+}
+
+.letter.repelled {
+    animation: repelAnimation 0.5s ease-out;
+}
+
+.instruction {
+    color: rgba(255,255,255,0.8);
+    font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+    animation: pulse 2s infinite;
+}
+
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 50%;
+    animation: floatUp 4s linear infinite;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes repelAnimation {
+    0% { transform: scale(1) rotateY(0deg); }
+    50% { transform: scale(0.8) rotateY(180deg) translateX(var(--repel-x, 0)) translateY(var(--repel-y, 0)); }
+    100% { transform: scale(1) rotateY(0deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    to {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .magnetic-text {
+        gap: 5px;
+        margin: 2rem 0;
+    }
+    
+    .letter {
+        touch-action: manipulation;
+    }
+    
+    .title {
+        margin-bottom: 2rem;
+    }
+}
+
+/* Touch device enhancements */
+@media (hover: none) and (pointer: coarse) {
+    .letter:active {
+        transform: scale(1.3) rotateY(25deg);
+        text-shadow: 0 0 40px rgba(255,255,255,0.9);
+    }
+    
+    .instruction {
+        content: "Tap the letters!";
+    }
+}

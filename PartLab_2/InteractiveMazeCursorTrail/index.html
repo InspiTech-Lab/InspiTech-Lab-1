@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Maze Cursor Trail</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h3 class="title">Maze Solver Trail</h3>
+        <div class="maze-container">
+            <canvas id="mazeCanvas"></canvas>
+            <div class="instructions">
+                <p>Move your cursor to create paths</p>
+                <p class="auto-solve">Watch it solve itself! 🎯</p>
+            </div>
+        </div>
+        <div class="controls">
+            <button id="resetBtn" class="control-btn">Reset Maze</button>
+            <button id="autoSolveBtn" class="control-btn">Auto Solve</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lightning Wireframe Animation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h3 class="title">Lightning Charged</h3>
+        <div class="wireframe-container">
+            <svg id="wireSvg" viewBox="0 0 400 400">
+                <defs>
+                    <filter id="glow">
+                        <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                        <feMerge>
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+            </svg>
+            <canvas id="lightningCanvas"></canvas>
+        </div>
+        <p class="instruction">Watch the electric energy flow</p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
